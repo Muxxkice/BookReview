@@ -1,50 +1,32 @@
-import React from "react";
-// import { memo } from "react";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  BrowserRouter as Router,
 } from "react-router-dom";
 
-import Login from "./Login";
-import Signup from "./Signup";
+import Top from './pages/Top';
+import Home from "./pages/Home"
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Page404 from "./pages/Page404";
+import Profile from "./pages/Profile";
 
-import './App.css';
-import Page404 from "./Page404";
-
-
-function App() {
+const App = () => {
   return (
     <>
       <Router>
-        <h1>Hello World</h1>
-        <div>
-          <nav className="top_nav">
-            <ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/signup'>ユーザー登録</Link>
-              </li>
-              <li>
-                <Link to='/login'>ログイン</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
         <Routes>
-        {/* <Route path="/" element={}/> */}
+          <Route exact path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/top" element={<Top />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
-
       </Router>
+
     </>
-  );
+  )
 }
 
 export default App;

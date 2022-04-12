@@ -1,3 +1,13 @@
+.booklog_container{
+  /* height: 800px; */
+}
+.booklog_content{
+  height: 300px;
+  width: 300px;
+  margin:10px;
+  background-color: fuchsia;
+}
+/* 元からある */
 .App {
   text-align: center;
 }
