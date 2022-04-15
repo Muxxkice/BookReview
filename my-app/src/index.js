@@ -1,37 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-// import {
-//   Routes,
-//   Route,
-//   BrowserRouter as Router,
-// } from "react-router-dom";
+import { CookiesProvider } from 'react-cookie';
 
-// import Top from './pages/Top';
-// import Home from "./pages/Home"
-// import Login from "./pages/Login";
-// import Signup from "./pages/Signup";
-// import Page404 from "./pages/Page404";
-// import Profile from "./pages/Profile";
+
 import App from './App';
 import './css/App.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-   {/* <Router>
-   <App />
-    <Routes>
-      <Route exact path="/" element={<Top />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/profole" element={<Profile />} />
-      <Route path="*" element={<Page404 />} />
-    </Routes>
-  </Router> */}
-
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

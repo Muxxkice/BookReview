@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Page404 from "./pages/Page404";
 import Profile from "./pages/Profile";
+import New from "./pages/New";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/top" element={<Top />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/new" element={<New />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>
