@@ -1,25 +1,39 @@
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { useForm } from "react-hook-form"
+import { useAuth } from "../compornents/useAuth"
 
 const Profile = () => {
 	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
-	const userToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDk4MjA0MzUsImlhdCI6IjIwMjItMDQtMTJUMDM6Mjc6MTUuMTU5MTM3Njc0WiIsInN1YiI6IjU0NTQ2NTU3MzU0IiwidXNlcl9pZCI6IjM0OTU5NjNiLTliZGMtNDU2Ny1hYmZkLTVkYzg3YzhjNGNjNiJ9._OZm66T6NGY2bFTXEJ0FS3n0TU_bwutjiXdA7MGy3Uo"
+	const { cookies, userName } = useAuth()
+	const { register, handleSubmit } = useForm()
 
-	const config = {
-		headers: {
-			Authorization: `Bearer ${userToken}`
+
+	const changeName = (data) => {
+		console.log(data)
+		const article = { "name": data.name }
+		const config = {
+			headers: {
+				Authorization: `Bearer ${cookies.userToken}`,
+			}
 		}
-	}
-	const changeName = () => {
-		axios.put(baseUrl, config)
-			.then((data) => console.log(data))
+		console.log(config)
+		axios.put(`${baseUrl}/users`, article, config)
+			.then((res) => {
+				console.log(res)
+			})
+
 	}
 	return (
 		<>
 			<h1>ユーザー情報編集</h1>
-			<p>新名前</p>
-			<input></input>
-			<button onClick={changeName}>変更</button>
+			<p>現在の名前</p>
+			<p>{userName}</p>
+			<form onSubmit={handleSubmit(changeName)}>
+				<p>新しい名前</p>
+				<input placeholder={userName} {...register("name")}></input>
+				<button>変更</button>
+			</form>
 			<Link to="/" >ホームへ戻る</Link>
 		</>
 	)
