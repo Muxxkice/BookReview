@@ -10,9 +10,8 @@ import { useCookies } from "react-cookie";
 export const useAuth = () => {
 	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const navigate = useNavigate()
-	// const { register, handleSubmit } = useForm();
-	// const [userToken, setUserToken] = useState();
 	const [cookies, setCookie, removeCookie] = useCookies();
+
 
 	const onSubmitLogin = (data) => {
 		const user = data;
@@ -20,9 +19,7 @@ export const useAuth = () => {
 			.post(`${baseUrl}/signin`, user)
 			.then((res) => {
 				console.log(res.data.token)
-				// setUserToken(res.data.token)
 				setCookie("userToken", res.data.token)
-				// alert('ログインに成功しました')
 				navigate("/")
 			})
 			.catch(() => alert('ログインできませんでした'))
@@ -31,8 +28,20 @@ export const useAuth = () => {
 	const deleteToken = () => {
 		console.log('delete')
 		removeCookie("userToken")
+		navigate("/login")
 	}
-	return ({ onSubmitLogin, cookies,deleteToken})
+
+	const [userName, setUserName] = useState()
+	const config = {
+		headers: {
+			Authorization: `Bearer ${cookies.userToken}`
+		}
+	}
+	axios
+		.get(`${baseUrl}/users`, config)
+		.then((data) => setUserName(data.data.name))
+
+	return ({ onSubmitLogin, cookies, deleteToken, userName })
 
 }
 
