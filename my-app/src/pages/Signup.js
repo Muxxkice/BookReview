@@ -34,7 +34,7 @@ export const Signup = () => {
 				</form>
 
 			</div>
-			<Link to='/login'>ログイン</Link>
+			<Link to="/login">ログイン</Link>
 		</>
 	)
 }
