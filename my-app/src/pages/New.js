@@ -14,13 +14,13 @@ export const New = () => {
 
 	const onSubmit = (data) => {
 		console.log(data)
-		// const article = { "name": data.name }
+		console.log(cookies.userToken)
 		const config = {
 			headers: {
-				Authorization: `Bearer ${cookies.userToken}`,
+				Authorization: `Bearer ${cookies.userToken}`
 			}
 		}
-		console.log(config)
+		axios
 			.post(`${baseUrl}/books`, data, config)
 	}
 
@@ -33,9 +33,9 @@ export const New = () => {
 				<p>url</p>
 				<input  {...register("url")}></input>
 				<p>detail</p>
-				<input name="detail"{...register("detail")}></input>
+				<input {...register("detail")}></input>
 				<p>review</p>
-				<input name="review"{...register("review")}></input>
+				<input {...register("review")}></input>
 				<button>登録</button>
 				<button>リセット</button>
 			</form>

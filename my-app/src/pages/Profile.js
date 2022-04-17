@@ -6,7 +6,7 @@ import { useAuth } from "../compornents/useAuth"
 const Profile = () => {
 	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const { cookies, userName } = useAuth()
-	const { register, handleSubmit } = useForm()
+	const { register, formState: { errors }, handleSubmit } = useForm()
 
 
 	const changeName = (data) => {
@@ -31,7 +31,9 @@ const Profile = () => {
 			<p>{userName}</p>
 			<form onSubmit={handleSubmit(changeName)}>
 				<p>新しい名前</p>
-				<input placeholder={userName} {...register("name")}></input>
+				<input placeholder={userName} {...register("name", { required: true })} />
+				{errors.name && <span>必須項目です</span>}
+				<br />
 				<button>変更</button>
 			</form>
 			<Link to="/" >ホームへ戻る</Link>

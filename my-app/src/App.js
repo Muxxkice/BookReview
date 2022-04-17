@@ -11,6 +11,8 @@ import Signup from "./pages/Signup";
 import Page404 from "./pages/Page404";
 import Profile from "./pages/Profile";
 import New from "./pages/New";
+import Detail from "./pages/Detail";
+import Edit from "./pages/Edit";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/top" element={<Top />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/new" element={<New />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/edit/:id" element={<Edit />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>

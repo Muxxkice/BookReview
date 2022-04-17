@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../compornents/useAuth"
 
 const Login = () => {
-	const { register, handleSubmit } = useForm();
+	const { register, formState: { errors }, handleSubmit } = useForm();
 	const { onSubmitLogin, cookies } = useAuth();
 	const onSubmit = (data) => {
 		onSubmitLogin(data)
@@ -20,11 +20,16 @@ const Login = () => {
 				<div>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<p>メールアドレス</p>
-						<input {...register("email")}
+						<input {...register("email", { required: true })}
 							placeholder="メールアドレス"></input>
+						<span>必須</span>
+						{errors.name && <span>必須項目です</span>}
 						<p>パスワード</p>
-						<input {...register("password")} name="password"
+						<input {...register("password", { required: true })} name="password"
 							placeholder="パスワード"></input>
+						<span>必須</span>
+						{errors.name && <span>必須項目です</span>}
+						<br />
 						<button>ログイン</button>
 					</form>
 				</div>
