@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import {
-	Link
+	Link, useNavigate
 } from "react-router-dom";
+import { useParams } from "react-router-dom"
+
 
 import useAuth from "../compornents/useAuth"
 
@@ -10,7 +12,8 @@ export const New = () => {
 	const { register, handleSubmit, errors } = useForm();
 	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const { cookies, userName } = useAuth()
-
+	const navigate = useNavigate();
+	const { id } = useParams();
 
 	const onSubmit = (data) => {
 		console.log(data)
@@ -22,6 +25,10 @@ export const New = () => {
 		}
 		axios
 			.post(`${baseUrl}/books`, data, config)
+			.then((res) => {
+				console.log(res)
+				navigate(`/detail/${id}`)
+			})
 	}
 
 	return (

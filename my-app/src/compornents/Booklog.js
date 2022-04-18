@@ -24,9 +24,14 @@ const Booklog = () => {
 	const User_map = booklList.map((user) => {
 		return (
 			<div key={user.id} className="booklog_content">
+				<dt>タイトル</dt>
 				<a href={user.url}>{user.title}</a>
-				<dt>{user.detail}</dt>
-				<dt>{user.reviewer}</dt>
+				<dt>詳細</dt>
+				<dd>{user.detail}</dd>
+				<dt>レビュワー</dt>
+				<dd>{user.reviewer}</dd>
+				<dt>レビュー</dt>
+				<dd>{user.review}</dd>
 				<button
 					onClick={() => {
 						navigate(`/detail/${user.id}`)
