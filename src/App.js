@@ -2,9 +2,9 @@ import {
   Routes,
   Route,
   BrowserRouter as Router,
+  Navigate
 } from "react-router-dom";
 
-import Top from './pages/Top';
 import Home from "./pages/Home"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -13,16 +13,19 @@ import Profile from "./pages/Profile";
 import New from "./pages/New";
 import Detail from "./pages/Detail";
 import Edit from "./pages/Edit";
+import useAuth from "./compornents/useAuth";
 
 const App = () => {
+  const IsAuthenticated = false;
   return (
     <>
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/top" element={<Top />} />
+          <Route path="/login" element={<Login />}>
+            {/* {IsAuthenticated ? <Navigate to="/" /> : <Login />} */}
+          </Route>
           <Route path="/profile" element={<Profile />} />
           <Route path="/new" element={<New />} />
           <Route path="/detail/:id" element={<Detail />} />

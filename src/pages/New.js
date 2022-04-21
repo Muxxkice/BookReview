@@ -32,7 +32,7 @@ export const New = () => {
 	}
 
 	return (
-		<>
+		<div className="wrapper">
 			<h1>書籍レビュー登録画面</h1>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<p>title</p>
@@ -40,14 +40,14 @@ export const New = () => {
 				<p>url</p>
 				<input  {...register("url")}></input>
 				<p>detail</p>
-				<input {...register("detail")}></input>
+				<textarea {...register("detail")}></textarea>
 				<p>review</p>
-				<input {...register("review")}></input>
+				<textarea {...register("review")}></textarea>
 				<button>登録</button>
 				<button>リセット</button>
 			</form>
 			<Link to="/" >Home</Link>
-		</>
+		</div>
 	)
 }
 export default New;

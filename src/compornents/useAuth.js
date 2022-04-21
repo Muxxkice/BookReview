@@ -11,6 +11,7 @@ export const useAuth = () => {
 	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const navigate = useNavigate()
 	const [cookies, setCookie, removeCookie] = useCookies();
+	const [IsAuthenticated, setIsAuthenticated] = useState(false) //ログイン判定
 
 
 	const onSubmitLogin = (data) => {
@@ -18,8 +19,9 @@ export const useAuth = () => {
 		axios
 			.post(`${baseUrl}/signin`, user)
 			.then((res) => {
-				console.log(res.data.token)
 				setCookie("userToken", res.data.token)
+				setIsAuthenticated(true);
+				console.log(IsAuthenticated)
 				navigate("/")
 			})
 			.catch(() => alert('ログインできませんでした'))
@@ -28,6 +30,8 @@ export const useAuth = () => {
 	const deleteToken = () => {
 		console.log('delete')
 		removeCookie("userToken")
+		setIsAuthenticated(false)
+		console.log(IsAuthenticated)
 		navigate("/login")
 	}
 
@@ -41,7 +45,7 @@ export const useAuth = () => {
 		.get(`${baseUrl}/users`, config)
 		.then((data) => setUserName(data.data.name))
 
-	return ({ onSubmitLogin, cookies, deleteToken, userName })
+	return ({ onSubmitLogin, cookies, deleteToken, userName, IsAuthenticated })
 
 }
 

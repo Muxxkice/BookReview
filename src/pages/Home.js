@@ -10,12 +10,15 @@ const Home = () => {
 	return (
 		<>
 			<Header />
+			<main>
 			<h1>Home</h1>
 			<p>こんにちは、{userName}さん</p>
 			<div className="booklog_container">
 				<Booklog />
+
 			</div>
 			<Link to="/login">ログイン</Link>
+			</main>
 
 		</>
 	)
