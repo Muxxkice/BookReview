@@ -16,7 +16,7 @@ import Edit from "./pages/Edit";
 import useAuth from "./compornents/useAuth";
 
 const App = () => {
-  const IsAuthenticated = false;
+  const IsAuthenticated = true;
   return (
     <>
       <Router>
@@ -24,9 +24,7 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login"
-            element={<Login />}></Route>
-          {/* {IsAuthenticated ? <Navigate to="/" /> : <Login />} */}
-
+            element={IsAuthenticated ? <Navigate to="/" /> : < Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/new" element={<New />} />
           <Route path="/detail/:id" element={<Detail />} />
