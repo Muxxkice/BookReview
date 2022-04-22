@@ -20,7 +20,7 @@ export const useAuth = () => {
 			.post(`${baseUrl}/signin`, user)
 			.then((res) => {
 				setCookie("userToken", res.data.token)
-				setIsAuthenticated(true);
+				setIsAuthenticated(!IsAuthenticated);
 				console.log(IsAuthenticated)
 				navigate("/")
 			})
