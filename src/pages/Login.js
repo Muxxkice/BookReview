@@ -13,13 +13,6 @@ const Login = () => {
 		onSubmitLogin(data)
 	};
 
-// 	if (isAuthenticated) {
-//     return <Route {...props}/>
-//   }else{
-//     console.log(`ログインしていないユーザーは${props.path}へはアクセスできません`)
-//     return <Redirect to="/login"/>
-//   }
-// }
 	return (
 		<div className={"login" + "flex"}>
 			<section className="top_container">
