@@ -21,24 +21,22 @@ export const Detail = () => {
 					<dd>{user.detail}</dd>
 					<dt>レビュー</dt>
 					<dd>{user.review}</dd>
-					<dt>url</dt>
-					<dd>{user.url}</dd>
 					<dt>レビュワー</dt>
 					<dd>{user.reviewer}</dd>
 				</dl>
 			</div>
 		)
-	}
-	)
+	})
 
 	return (
-		<>
+		<div className="wrapper">
 			<h1>書籍レビューの詳細</h1>
-			<p>idは{id}</p>
-			{review_map}
+			<div className="review_container">
+				{review_map}
+			</div>
 			<button onClick={() => { navigate(`/edit/${id}`) }} s>編集</button>
 			<Link to="/">戻る</Link>
-		</>
+		</div>
 	)
 }
 export default Detail;

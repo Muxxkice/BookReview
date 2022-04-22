@@ -22,6 +22,7 @@ export const useReview = () => {
 			.then((res) => {
 				setReview(Array(res.data))
 			})
+			.catch((e) => console.log(e))
 	}, [])
 
 	return ({ review })

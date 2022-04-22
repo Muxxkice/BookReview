@@ -15,8 +15,7 @@ export const Edit = () => {
 	const { cookies } = useAuth();
 	const { review } = useReview();
 	const [newReview, setNewReview] = useState([]);
-	const isMine = false;
-
+	console.log(review);
 	const onSubmit = (data) => {
 		console.log(data);
 		setNewReview(data)
@@ -56,7 +55,7 @@ export const Edit = () => {
 	}
 
 	return (
-		<>
+		<div className="wrapper">
 			<h1>書籍レビューの編集画面</h1>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<p>タイトル</p>
@@ -69,16 +68,14 @@ export const Edit = () => {
 				{/* <p>{review[0].detail}</p> */}
 				<input{...register("detail")}></input>
 				<p>レビュー</p>
-				{/* <p>{review[0].review}</p> */}
 				<input{...register("review")}></input>
 				<br />
 				<button onClick={deleteReview}>削除</button>
 				<button onClick={editReview}>編集</button>
 			</form>
-			{/* <p>レビューを書いた人は{review[0].reviewer}</p> */}
 			<p>idは{id}</p>
 			<Link to={`/detail/${id}`}>戻る</Link>
-		</>
+		</div>
 	)
 
 }

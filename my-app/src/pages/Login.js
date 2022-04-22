@@ -13,9 +13,16 @@ const Login = () => {
 		onSubmitLogin(data)
 	};
 
+// 	if (isAuthenticated) {
+//     return <Route {...props}/>
+//   }else{
+//     console.log(`ログインしていないユーザーは${props.path}へはアクセスできません`)
+//     return <Redirect to="/login"/>
+//   }
+// }
 	return (
-		<>
-			<div>
+		<div className={"login" + "flex"}>
+			<section className="top_container">
 				<h2>ログインページ</h2>
 				<div>
 					<form onSubmit={handleSubmit(onSubmit)}>
@@ -25,7 +32,7 @@ const Login = () => {
 						<span>必須</span>
 						{errors.name && <span>必須項目です</span>}
 						<p>パスワード</p>
-						<input {...register("password", { required: true })} name="password"
+						<input {...register("password", { required: true })} type="password"
 							placeholder="パスワード"></input>
 						<span>必須</span>
 						{errors.name && <span>必須項目です</span>}
@@ -34,8 +41,8 @@ const Login = () => {
 					</form>
 				</div>
 				<Link to='/signup'>ユーザー登録</Link>
-			</div>
-		</>
+			</section>
+		</div>
 
 	)
 }
