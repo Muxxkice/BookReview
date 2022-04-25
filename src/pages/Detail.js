@@ -35,10 +35,8 @@ export const Detail = () => {
 			<div className="review_container">
 				{review_map}
 			</div>
-			if(review[0].isMine) {
-				<button onClick={() => { navigate(`/edit/${id}`) }} s>編集</button>
-			}
 
+			<button onClick={() => { navigate(`/edit/${id}`) }}>編集</button>
 			<Link to="/">戻る</Link>
 		</div>
 	)
