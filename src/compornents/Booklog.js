@@ -12,8 +12,8 @@ const Booklog = () => {
 	const [personal_booklList, setPersonal_BooklList] = useState([]);
 	const navigate = useNavigate();
 	const { onSubmitLogin, cookies, deleteToken, userName } = useAuth();
+	const [nextBook, setNextBook] = useState(20); //本の取得
 	const { bookCount, setBookCount } = useState(0); //本の件数
-
 
 	useEffect(() => {
 		axios
@@ -42,17 +42,22 @@ const Booklog = () => {
 				<dt>タイトル</dt>
 				<a href={user.url}>{user.title}</a>
 				<dt>詳細</dt>
-				<dd>{user.detail}</dd>
-				<dt>レビュワー</dt>
-				<dd>{user.reviewer}</dd>
-				<dt>レビュー</dt>
-				<dd>{user.review}</dd>
-				<LikeButton />
+				<dd className="line_wrap">{user.detail}</dd>
 				<button
 					onClick={() => {
 						navigate(`/detail/${user.id}`)
 					}}
 				>詳細</button>
+				<div className="user_review">
+					<dt>レビュー</dt>
+					<dd className="line_wrap">{user.review}</dd>
+					<dt>レビュワー</dt>
+					<dd>{user.reviewer}</dd>
+					<LikeButton />
+				</div>
+
+
+
 			</div >
 		)
 	})
@@ -64,11 +69,11 @@ const Booklog = () => {
 					<dt>タイトル</dt>
 					<a href={user.url}>{user.title}</a>
 					<dt>詳細</dt>
-					<dd>{user.detail}</dd>
+					<dd className="line_wrap">{user.detail}</dd>
 					<dt>レビュワー</dt>
 					<dd>{user.reviewer}</dd>
 					<dt>レビュー</dt>
-					<dd>{user.review}</dd>
+					<dd >{user.review}</dd>
 					<button
 						onClick={() => {
 							navigate(`/detail/${user.id}`)
@@ -79,12 +84,25 @@ const Booklog = () => {
 		}
 	})
 
+	const nextPage = () => {
+		console.log(nextBook)
+		axios
+			.get(`${baseUrl}/books/public?offset=${nextBook}`)
+			.then((res) => {
+				console.log(res.data)
+				// setBooklList(res.data)
+				// 	setNextBook(nextBook + 10)
+
+			})
+	}
+
 	return (
 		<>
 			{/* <button onClick={personal_booklog_map}>自分の履歴のみ表示</button> */}
 			{User_map}
 			{/* {personal_booklog_map} */}
 			{/* <form><input></input></form> */}
+			<button onClick={nextPage}>続きを見る</button>
 
 
 		</>

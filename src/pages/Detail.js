@@ -28,13 +28,17 @@ export const Detail = () => {
 		)
 	})
 
+
 	return (
 		<div className="wrapper">
 			<h1>書籍レビューの詳細</h1>
 			<div className="review_container">
 				{review_map}
 			</div>
-			<button onClick={() => { navigate(`/edit/${id}`) }} s>編集</button>
+			if(review[0].isMine) {
+				<button onClick={() => { navigate(`/edit/${id}`) }} s>編集</button>
+			}
+
 			<Link to="/">戻る</Link>
 		</div>
 	)

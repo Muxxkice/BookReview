@@ -1,12 +1,12 @@
 
 :root {
-  --primary: #4ba5e8;
-  --base: #ffffff;
+  --primary: #8674eb;
+  --base: #ed7c68 ;
   --text: #555555;
 }
 
 html {
-  background-color: #45ccc8 ;
+  background-color:var(--primary) ;
 }
 
 .flex {
@@ -20,11 +20,13 @@ main {
 
 header {
   background-color: #EEE;
+  height: 100px;
 }
 span {
   color: red;
   font-size: 12px;
 }
+
 .wrapper {
   width: 500px;
   height:500px;
@@ -47,6 +49,7 @@ span {
     -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     }
 .booklog_container{
+
   /* height: 800px; */
 }
 .booklog_content{
@@ -54,6 +57,16 @@ span {
   width: 400px;
   margin:10px;
   background-color: rgb(255, 229, 205);
+}
+.line_wrap {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+.user_review {
+  background-color: #45ccc8
+
 }
 .profile_container1 {
 }

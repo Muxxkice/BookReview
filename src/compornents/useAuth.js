@@ -2,50 +2,61 @@ import {
 	Link
 	, useNavigate
 } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { useState } from "react"
+
+import { useState, useEffect } from "react"
 import { useCookies } from "react-cookie";
+import axios from "axios";
 
-export const useAuth = () => {
-	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
-	const navigate = useNavigate()
+const signin = (user) => {
+	return axios
+		.post('/signin', user)
+}
+const getUser = () => {
+	return axios
+		.get('/users')
+}
+
+
+export const useAuth = (props) => {
 	const [cookies, setCookie, removeCookie] = useCookies();
-	const [IsAuthenticated, setIsAuthenticated] = useState(false) //ログイン判定
-
-
-	const onSubmitLogin = (data) => {
-		const user = data;
-		axios
-			.post(`${baseUrl}/signin`, user)
-			.then((res) => {
-				setCookie("userToken", res.data.token)
-				setIsAuthenticated(!IsAuthenticated);
-				console.log(IsAuthenticated)
-				navigate("/")
-			})
-			.catch(() => alert('ログインできませんでした'))
-	}
-
-	const deleteToken = () => {
-		console.log('delete')
-		removeCookie("userToken")
-		setIsAuthenticated(false)
-		console.log(IsAuthenticated)
-		navigate("/login")
-	}
-
-	const [userName, setUserName] = useState()
+	const [userName, setUserName] = useState() //ユーザー名
+	const [IsAuth, setIsAuth] = useState(false) //ログイン判定
 	const config = {
 		headers: {
 			Authorization: `Bearer ${cookies.userToken}`
 		}
 	}
-	axios
-		.get(`${baseUrl}/users`, config)
-		.then((data) => setUserName(data.data.name))
 
-	return ({ onSubmitLogin, cookies, deleteToken, userName, IsAuthenticated })
+	// cookiesが更新されたらログイン判定
+	//ログイン状態で/loginにいると/に飛ぶ
+	useEffect(() => {
+		setIsAuth(!!cookies.userToken);
+		axios.defaults.headers.common['Authorization'] = cookies.userToken;
+		console.log('cookiesが更新された')
+		//API default
+	}, [cookies])
+
+	useEffect(() => {
+		console.log('IsAuthが更新された')
+		axios
+			.get('/users', config)
+			.then((data) => setUserName(data.data.name))
+	}, [IsAuth])
+
+	// ログインボタンが押されたら発火 data
+	const onSubmitLogin = async (data) => {
+		const user = data;
+		console.log(user)
+		const res = await signin(user)
+		return setCookie("userToken", res.data.token);
+	}
+
+	const deleteToken = () => {
+		console.log('delete')
+		removeCookie("userToken")
+	}
+
+	return ({ onSubmitLogin, cookies, deleteToken, userName, IsAuth })
 
 }
 
