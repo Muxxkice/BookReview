@@ -22,8 +22,8 @@ export const Signup = () => {
 	return (
 		<div className="login">
 			<section className="top_container">
-				<h2>ユーザー登録</h2>
-				<div>
+				<div className='input_box'>
+					<h2>ユーザー登録</h2>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<p>名前</p>
 						<input {...register("name", { required: true })}
@@ -39,11 +39,11 @@ export const Signup = () => {
 						<span>必須</span>
 						{errors.password && <span>必須項目です</span>}
 						<br />
-						<button>登録</button>
+						<button className='primary_btn'>登録</button>
 					</form>
+					<p>既に登録済みの場合</p>
+					<button><Link to="/login">ログイン</Link></button>
 				</div>
-				<p>既に登録済みの場合</p>
-				<Link to="/login">ログイン</Link>
 			</section>
 		</div>
 	)

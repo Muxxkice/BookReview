@@ -1,7 +1,9 @@
 
 :root {
   --primary: #8674eb;
-  --base: #ed7c68 ;
+  --secondary:#4c2ff1;
+  --acsent:#ed7c68;
+  /* --base:  ; */
   --text: #555555;
 }
 
@@ -13,20 +15,77 @@ html {
   display: flex;
   align-items: center;
 }
-
 main {
   background-color: #EEE;
+  margin :20px;
 }
+a {
+  text-decoration: none;
+}
+ul {
+  display: flex;
+}
+li {
+  list-style: none;
+  display: inline-block;
+  background-color: var(--secondary);
+  padding: 3px;
+  margin: 10px;
 
+}
+li a {
+  padding : 0 10px;
+}
+a {
+  color : #fff;
+}
 header {
-  background-color: #EEE;
+  background-color:var(--primary);
   height: 100px;
 }
 span {
   color: red;
   font-size: 12px;
+  margin :5px;
+}
+button {
+  padding : 0 10px;
+  margin :10px 0;
+}
+.primary_btn {
+  background-color: #ed7c68;
+  color: #fff;
+  display: inline-flex;
+}
+.secondary_btn {
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+  background-color: fff;
+  display: inline-flex;
 }
 
+
+input  {
+  border: 1px solid #8674eb;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+}
+textarea {
+  border: 1px solid #8674eb;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+  height: 200px;
+  width: 400px;
+}
+input:focus ,textarea:focus {
+  border: 2px solid  skyblue;
+  outline: none;
+}
+.input_box {
+  margin: 10px;
+}
 .wrapper {
   width: 500px;
   height:500px;
@@ -39,6 +98,7 @@ span {
 }
 
 .top_container {
+  margin: 10px;
   height:500px;
   width: 500px;
   background-color: aliceblue;
@@ -48,26 +108,37 @@ span {
     -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     }
-.booklog_container{
 
-  /* height: 800px; */
-}
+    .review_container {
+      margin: 10px;
+      height:800px;
+      width: 600px;
+      background-color: aliceblue;
+      border-radius: 1%;;
+        border:1px solid #EEE;
+        box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+        -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+        -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+        }
+
 .booklog_content{
+  width: 500px;
   height: 400px;
-  width: 400px;
-  margin:10px;
+  margin: 10px 0 ;
+  padding :10px;
   background-color: rgb(255, 229, 205);
+
 }
 .line_wrap {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
 }
-.user_review {
+/* .user_review {
   background-color: #45ccc8
 
-}
+} */
 .profile_container1 {
 }
 .new_container {

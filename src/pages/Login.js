@@ -18,8 +18,8 @@ const Login = () => {
 	return (
 		<div className={"login" + "flex"}>
 			<section className="top_container">
+				<div className="input_box">
 				<h2>ログインページ</h2>
-				<div>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<p>メールアドレス</p>
 						<input {...register("email", { required: true })}
@@ -32,10 +32,13 @@ const Login = () => {
 						<span>必須</span>
 						{errors.name && <span>必須項目です</span>}
 						<br />
-						<button>ログイン</button>
+						<button className="primary_btn">ログイン</button>
 					</form>
+					<div className="non">
+					<p>まだ登録を行なっていない方</p>
+					<button><Link to='/signup'>ユーザー登録</Link></button>
+					</div>
 				</div>
-				<Link to='/signup'>ユーザー登録</Link>
 			</section>
 		</div>
 

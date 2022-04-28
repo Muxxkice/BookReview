@@ -12,6 +12,7 @@ export const Detail = () => {
 	const navigate = useNavigate();
 
 	const review_map = review.map((user) => {
+		console.log(user.isMine)
 		return (
 			<div key={user.id}>
 				<dl>
@@ -24,7 +25,9 @@ export const Detail = () => {
 					<dt>レビュワー</dt>
 					<dd>{user.reviewer}</dd>
 				</dl>
-			</div>
+				{ user.isMine && (<button onClick={() => { navigate(`/edit/${id}`) }}>編集</button>)}
+			</div >
+
 		)
 	})
 
@@ -35,9 +38,9 @@ export const Detail = () => {
 			<div className="review_container">
 				{review_map}
 			</div>
-
-			<button onClick={() => { navigate(`/edit/${id}`) }}>編集</button>
-			<Link to="/">戻る</Link>
+			{/* <button onClick={() => { navigate(`/edit/${id}`) }}>編集</button> */}
+			<Link to="/">トップ</Link>
+			<Link to="/mypage">マイページ</Link>
 		</div>
 	)
 }

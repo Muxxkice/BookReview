@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom"
 import { useAuth } from "./useAuth"
 
 export const useReview = () => {
-	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const { id } = useParams();
 	const { cookies } = useAuth();
 	const [review, setReview] = useState([]);
+	const [bookList, setBookList] = useState([]);
 
 	useEffect(() => {
 		const config = {
@@ -17,13 +17,23 @@ export const useReview = () => {
 			}
 		}
 		axios
-			.get(`${baseUrl}/books/${id}`, config)
+			.get(`/books/${id}`, config)
 			.then((res) => {
 				setReview(Array(res.data))
 			})
 			.catch((e) => console.log(e))
 	}, [])
 
-	return ({ review })
+	useEffect(() => {
+		axios
+			.get(`/public/books`)
+			.then((res) => {
+				// console.log(res.data)
+				setBookList(res.data)
+			})
+		//publicと差がある理由がわからない
+	}, [])
+
+	return ({ review, bookList,setBookList })
 }
 export default useReview;

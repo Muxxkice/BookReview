@@ -12,9 +12,8 @@ const Home = () => {
 			<Header />
 			<main>
 				<p>こんにちは、{userName}さん</p>
-				<div className="booklog_container">
+					<h2>新着一覧</h2>
 					<Booklog />
-				</div>
 				<Link to="/login">ログイン</Link>
 			</main>
 
