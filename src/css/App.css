@@ -1,0 +1,209 @@
+
+:root {
+  --primary: #8674eb;
+  --secondary:#4c2ff1;
+  --acsent:#ed7c68;
+  /* --base:  ; */
+  --text: #555555;
+}
+@media screen and (max-width:639px) {
+  /*スマホ用のcssを記述*/
+  }
+
+@media screen and (min-width:1024px) {
+  /*pc用のcssを記述*/
+  }
+
+html {
+  background-color:var(--primary) ;
+}
+
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  background-color: #EEE;
+  margin :20px;
+}
+a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+ul {
+  display: flex;
+}
+li {
+  list-style: none;
+  display: inline-block;
+  background-color: var(--secondary);
+  padding: 3px;
+  margin: 10px;
+
+}
+li a {
+  padding : 0 10px;
+  color : #fff;
+}
+
+header {
+  background-color:var(--primary);
+  height: 100px;
+}
+span {
+  color: red;
+  font-size: 12px;
+  margin :5px;
+}
+button {
+  padding : 0 10px;
+  margin :10px 0;
+}
+.primary_btn {
+  background-color: #ed7c68;
+  color: #fff;
+  display: inline-flex;
+}
+.secondary_btn {
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+  background-color: fff;
+  display: inline-flex;
+}
+
+
+input  {
+  border: 1px solid #8674eb;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+}
+textarea {
+  border: 1px solid #8674eb;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+  height: 200px;
+  width: 400px;
+}
+input:focus ,textarea:focus {
+  border: 2px solid  skyblue;
+  outline: none;
+}
+
+.wrapper {
+  width: 500px;
+  height:500px;
+  background-color: #EEE;
+  border-radius: 1%;;
+  border:1px solid #EEE;
+  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+
+.top_container {
+  margin: 10px;
+  height:500px;
+  width: 500px;
+  margin-top: 30px;
+
+  background-color: aliceblue;
+  border-radius: 1%;;
+    border:1px solid #EEE;
+    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+    }
+    .top_container h2 {
+      text-align: center;
+    }
+    .top_container form {
+      margin-top: 40px;
+    }
+    .input_box {
+      margin: 20px;
+    }
+
+
+    .review_container {
+      margin: 10px;
+      height:800px;
+      width: 600px;
+      background-color: aliceblue;
+      border-radius: 1%;;
+        border:1px solid #EEE;
+        box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+        -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+        -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+        }
+
+.booklog_content{
+  width: 500px;
+  height: 400px;
+  margin: 10px 0 ;
+  padding :10px;
+  background-color: rgb(255, 229, 205);
+
+}
+.line_wrap {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+/* .user_review {
+  background-color: #45ccc8
+
+} */
+.profile_container1 {
+}
+.new_container {
+  }
+.detail_container {
+}
+.edit_container {
+
+}
+
+/* 元からある */
+.App {
+  text-align: center;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
