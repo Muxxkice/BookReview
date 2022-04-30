@@ -6,21 +6,32 @@
   /* --base:  ; */
   --text: #555555;
 }
+@media screen and (max-width:639px) {
+  /*スマホ用のcssを記述*/
+  }
+
+@media screen and (min-width:1024px) {
+  /*pc用のcssを記述*/
+  }
 
 html {
   background-color:var(--primary) ;
 }
 
+
 .flex {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
+
 main {
   background-color: #EEE;
   margin :20px;
 }
 a {
   text-decoration: none;
+  color: var(--secondary);
 }
 ul {
   display: flex;
@@ -35,10 +46,9 @@ li {
 }
 li a {
   padding : 0 10px;
-}
-a {
   color : #fff;
 }
+
 header {
   background-color:var(--primary);
   height: 100px;
@@ -83,9 +93,7 @@ input:focus ,textarea:focus {
   border: 2px solid  skyblue;
   outline: none;
 }
-.input_box {
-  margin: 10px;
-}
+
 .wrapper {
   width: 500px;
   height:500px;
@@ -101,6 +109,8 @@ input:focus ,textarea:focus {
   margin: 10px;
   height:500px;
   width: 500px;
+  margin-top: 30px;
+
   background-color: aliceblue;
   border-radius: 1%;;
     border:1px solid #EEE;
@@ -108,6 +118,16 @@ input:focus ,textarea:focus {
     -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     }
+    .top_container h2 {
+      text-align: center;
+    }
+    .top_container form {
+      margin-top: 40px;
+    }
+    .input_box {
+      margin: 20px;
+    }
+
 
     .review_container {
       margin: 10px;

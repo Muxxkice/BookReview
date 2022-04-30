@@ -20,7 +20,7 @@ export const Signup = () => {
 	};
 
 	return (
-		<div className="login">
+		<div className="flex">
 			<section className="top_container">
 				<div className='input_box'>
 					<h2>ユーザー登録</h2>
@@ -42,7 +42,7 @@ export const Signup = () => {
 						<button className='primary_btn'>登録</button>
 					</form>
 					<p>既に登録済みの場合</p>
-					<button><Link to="/login">ログイン</Link></button>
+					<button className='secondary_btn'><Link to="/login">ログイン</Link></button>
 				</div>
 			</section>
 		</div>

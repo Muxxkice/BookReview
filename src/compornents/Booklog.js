@@ -68,13 +68,8 @@ const Booklog = () => {
 	return (
 		<>
 			{User_map}
-			{/* {personal_booklog_map} */}
-			{/* <form><input></input></form> */}
 			<button onClick={backPage}>前</button>
 			<button onClick={nextPage}>次</button>
-			{/* <button onClick={backPage}>前に戻る</button> */}
-
-
 		</>
 	)
 }

@@ -5,7 +5,7 @@ import {
 import { useForm } from "react-hook-form";
 
 import { useAuth } from "../compornents/useAuth"
-import API from "../compornents/API";
+import Api from "../compornents/Api";
 
 
 const Login = () => {
@@ -16,10 +16,10 @@ const Login = () => {
 	};
 
 	return (
-		<div className={"login" + "flex"}>
+		<div className="flex">
 			<section className="top_container">
 				<div className="input_box">
-				<h2>ログインページ</h2>
+					<h2>ログインページ</h2>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<p>メールアドレス</p>
 						<input {...register("email", { required: true })}
@@ -35,8 +35,8 @@ const Login = () => {
 						<button className="primary_btn">ログイン</button>
 					</form>
 					<div className="non">
-					<p>まだ登録を行なっていない方</p>
-					<button><Link to='/signup'>ユーザー登録</Link></button>
+						<p>まだ登録を行なっていない方</p>
+						<button className='secondary_btn'><Link to='/signup'>ユーザー登録</Link></button>
 					</div>
 				</div>
 			</section>

@@ -21,14 +21,6 @@ export const Header = () => {
 		}
 	}, [])
 
-	// const backHome = () => {
-	// 	console.log(location.pathname)
-	// 	if (location.pathname == "/") {
-	// 		console.log('backHome')
-	// 		return (<Link to="/">トップに戻る</Link>)
-	// 	}
-	// }
-
 	if (IsAuth) {
 		return (<header>
 			<p>user:{userName}</p>
@@ -48,7 +40,7 @@ export const Header = () => {
 				<nav className="header_nav">
 					<ul>
 						<li><Link to="login">ログイン</Link></li>
-						<li>{pathname && <Link to="/">トップに戻る</Link>}</li>
+						{pathname && <button className="primary_btn"><Link to="/">トップに戻る</Link></button>}
 						<button><Link to="/mypage">新規登録</Link></button>
 					</ul>
 				</nav>

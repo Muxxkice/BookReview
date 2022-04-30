@@ -3,6 +3,7 @@ import {
 	, useNavigate
 } from "react-router-dom";
 
+
 import { useState, useEffect } from "react"
 import { useCookies } from "react-cookie";
 import axios from "axios";
@@ -21,6 +22,7 @@ export const useAuth = (props) => {
 	const [cookies, setCookie, removeCookie] = useCookies();
 	const [userName, setUserName] = useState() //ユーザー名
 	const [IsAuth, setIsAuth] = useState(false) //ログイン判定
+
 	const config = {
 		headers: {
 			Authorization: `Bearer ${cookies.userToken}`
@@ -30,14 +32,14 @@ export const useAuth = (props) => {
 	// cookiesが更新されたらログイン判定
 	//ログイン状態で/loginにいると/に飛ぶ
 	useEffect(() => {
+		// setIsAuth(cookies.userToken);
 		setIsAuth(!!cookies.userToken);
 		axios.defaults.headers.common['Authorization'] = cookies.userToken;
 		console.log('cookiesが更新された')
-		//API default
 	}, [cookies])
 
 	useEffect(() => {
-		console.log('IsAuthが更新された')
+		console.log('IsAuthが更新された' + IsAuth)
 		axios
 			.get('/users', config)
 			.then((data) => setUserName(data.data.name))
@@ -46,7 +48,6 @@ export const useAuth = (props) => {
 	// ログインボタンが押されたら発火 data
 	const onSubmitLogin = async (data) => {
 		const user = data;
-		console.log(user)
 		const res = await signin(user)
 		return setCookie("userToken", res.data.token);
 	}
@@ -56,7 +57,8 @@ export const useAuth = (props) => {
 		removeCookie("userToken")
 	}
 
-	return ({ onSubmitLogin, cookies, deleteToken, userName, IsAuth })
+	return (
+		{ onSubmitLogin, cookies, deleteToken, userName, IsAuth })
 
 }
 
