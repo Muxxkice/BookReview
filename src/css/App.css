@@ -14,10 +14,12 @@
   /*pc用のcssを記述*/
   }
 
+h2 {
+  text-align: center;
+  }
 html {
   background-color:var(--primary) ;
 }
-
 
 .flex {
   display: flex;
@@ -27,6 +29,9 @@ html {
 
 main {
   background-color: #EEE;
+}
+.main_container {
+  padding-top: 50px;
 }
 a {
   text-decoration: none;
@@ -123,9 +128,6 @@ input:focus ,textarea:focus {
     -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
     }
-    .top_container h2 {
-      text-align: center;
-    }
     .top_container form {
       margin-top: 40px;
     }
@@ -149,16 +151,26 @@ input:focus ,textarea:focus {
 .booklog_content{
   width: 500px;
   height: 400px;
-  margin: 10px 0 ;
-  padding :10px;
-  background-color: rgb(255, 229, 205);
+  margin: 20px auto ;
 
+  padding :20px;
+  background-color: rgb(255, 229, 205);
+  border-radius: 2%;;
+  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+ h2 {
+  text-align: center;
 }
 .line_wrap {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
+}
+footer {
+  height : 50px;
 }
 /* .user_review {
   background-color: #45ccc8
