@@ -2,48 +2,52 @@ import {
 	Link
 	, useNavigate
 } from "react-router-dom";
+import axios from "axios";
 
 
 import { useState, useEffect } from "react"
 import { useCookies } from "react-cookie";
-import axios from "axios";
-
-const signin = (user) => {
-	return axios
-		.post('/signin', user)
-}
-const getUser = () => {
-	return axios
-		.get('/users')
-}
-
+import { signin, getUser } from "../api/userApi";
+import { setDefaultHeader } from "../api";
 
 export const useAuth = (props) => {
 	const [cookies, setCookie, removeCookie] = useCookies();
 	const [userName, setUserName] = useState() //ユーザー名
 	const [IsAuth, setIsAuth] = useState(false) //ログイン判定
 
-	const config = {
-		headers: {
-			Authorization: `Bearer ${cookies.userToken}`
-		}
-	}
-
 	// cookiesが更新されたらログイン判定
 	//ログイン状態で/loginにいると/に飛ぶ
 	useEffect(() => {
 		// setIsAuth(cookies.userToken);
+		setDefaultHeader({ Authorization: `Bearer ${cookies.userToken}` })
 		setIsAuth(!!cookies.userToken);
-		axios.defaults.headers.common['Authorization'] = cookies.userToken;
 		console.log('cookiesが更新された')
 	}, [cookies])
 
 	useEffect(() => {
-		console.log('IsAuthが更新された' + IsAuth)
-		axios
-			.get('/users', config)
-			.then((data) => setUserName(data.data.name))
-	}, [IsAuth])
+    (async () => {
+        if (IsAuth) {
+            const res = await getUser();
+            setUserName(res.data.name);
+            return;
+        }
+        setUserName(null);
+    })();
+},[IsAuth]);
+	// useEffect(() => {
+	// 	//try
+	// 	(async () => {
+	// 		if (IsAuth) {
+
+	// 		}
+
+	// 	})()
+	// 	console.log('IsAuthが更新された' + IsAuth)
+
+	// 	axios
+	// 		.get('/users', config)
+	// 		.then((res) => setUserName(res.data.name))
+	// }, [IsAuth])
 
 	// ログインボタンが押されたら発火 data
 	const onSubmitLogin = async (data) => {
