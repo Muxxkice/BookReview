@@ -6,7 +6,6 @@ import Footer from "../compornents/Footer";
 import { useAuth } from "../compornents/useAuth"
 
 const Home = () => {
-	const { userName } = useAuth();
 
 	return (
 		<>

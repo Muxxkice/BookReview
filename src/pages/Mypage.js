@@ -12,7 +12,6 @@ export const Mypage = () => {
 	const navigate = useNavigate();
 	// const [personal_booklList, setPersonal_BooklList] = useState([]);
 
-	console.log(bookList)
 	const personal_booklog_map = bookList.map((user) => {
 		if (user.reviewer == userName) {
 			return (

@@ -6,20 +6,32 @@ import { useState } from "react"
 
 import { useAuth } from "../compornents/useAuth"
 import { useReview } from "../compornents/useReview"
+import { deleteReview } from "../api/bookApi"
+
+export const editReview = (id,article) => {
+	axios
+		.put(`/books/${id}`, article)
+		.then((res) => {
+			console.log(res)
+			//	navigate(`/detail/${id}`)
+		})
+		.catch(e => console.log(e))
+}
 
 export const Edit = () => {
-	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const { register, handleSubmit } = useForm();
 	const navigate = useNavigate()
 	const { id } = useParams();
 	const { cookies } = useAuth();
 	const { review } = useReview();
 	const [newReview, setNewReview] = useState([]);
-	console.log(review);
+
+
 	const onSubmit = (data) => {
 		console.log(data);
 		setNewReview(data)
 	};
+
 	const article = {
 		"title": newReview.title,
 		"url": newReview.url,
@@ -27,33 +39,19 @@ export const Edit = () => {
 		"review": newReview.review
 	}
 
-	const config = {
-		headers: {
-			Authorization: `Bearer ${cookies.userToken}`
-		}
-	}
-	const editReview = () => {
-		console.log(article)
-		console.log(`${baseUrl}/books/${id}`)
-		axios
-			.put(`${baseUrl}/books/${id}`, article, config)
-			.then((res) => {
-				console.log(res)
+const onClickEdit = () => {
+	axios
+		.put(`/books/${id}`, article)
+		.then((res) => {
+			console.log(res)
 				navigate(`/detail/${id}`)
-			})
-			.catch(e => console.log(e))
-	}
-	const deleteReview = () => {
-		console.log('削除')
-		axios
-			.delete(`${baseUrl}/books/${id}`, config)
-			.then((data) => {
-				console.log(data)
-				navigate("/")
-			})
-			.catch(e => console.log(e))
+		})
+		.catch(e => console.log(e))
 	}
 
+	const onClickDelete = () => {
+		deleteReview(id)
+	}
 	return (
 		<div className="wrapper">
 			<h1>書籍レビューの編集画面</h1>
@@ -70,8 +68,8 @@ export const Edit = () => {
 				<p>レビュー</p>
 				<input{...register("review")}></input>
 				<br />
-				<button onClick={deleteReview}>削除</button>
-				<button onClick={editReview}>編集</button>
+				<button onClick={onClickDelete}>削除</button>
+				<button onClick={onClickEdit}>編集</button>
 			</form>
 			<p>idは{id}</p>
 			<Link to={`/detail/${id}`}>戻る</Link>
