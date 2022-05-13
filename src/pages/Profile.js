@@ -1,36 +1,23 @@
-import axios from "axios"
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { useAuth } from "../compornents/useAuth"
+import {changeUserName} from "../api/userApi"
 
 const Profile = () => {
-	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
-	const { cookies, userName } = useAuth()
+	const { userName } = useAuth()
 	const { register, formState: { errors }, handleSubmit } = useForm()
 
-
-	const changeName = (data) => {
-		console.log(data)
-		const article = { "name": data.name }
-		const config = {
-			headers: {
-				Authorization: `Bearer ${cookies.userToken}`,
-			}
-		}
-		console.log(config)
-		axios.put(`${baseUrl}/users`, article, config)
-			.then((res) => {
-				console.log(res)
-			})
-
+	const onSubmit = (data) => {
+		changeUserName(data)
 	}
+
 	return (
 		<>
 			<div class="wrapper">
 				<h1>ユーザー情報編集</h1>
 				<p>現在の名前</p>
 				<p>{userName}</p>
-				<form onSubmit={handleSubmit(changeName)}>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<p>新しい名前</p>
 					<input placeholder={userName} {...register("name", { required: true })} />
 					{errors.name && <span>必須項目です</span>}

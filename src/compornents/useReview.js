@@ -11,13 +11,9 @@ export const useReview = () => {
 	const [bookList, setBookList] = useState([]);
 
 	useEffect(() => {
-		const config = {
-			headers: {
-				Authorization: `Bearer ${cookies.userToken}`
-			}
-		}
+
 		axios
-			.get(`/books/${id}`, config)
+			.get(`/books/${id}`)
 			.then((res) => {
 				setReview(Array(res.data))
 			})

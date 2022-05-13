@@ -8,5 +8,5 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
   },
-  "files": ["App.tsx", "LikeButton.tsx","Loading.tsx", "reportWebVitals.ts"]
+  "files": ["App.tsx","userApi.ts","index.ts", "bookApi.ts" ,"LikeButton.tsx","Loading.tsx", "reportWebVitals.ts"]
 }
