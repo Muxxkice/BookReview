@@ -1,11 +1,12 @@
+import { VFC } from "react";
 import {
   Routes,
   Route,
   BrowserRouter as Router,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 
-import Home from "./pages/Home"
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Page404 from "./pages/Page404";
@@ -16,8 +17,7 @@ import Edit from "./pages/Edit";
 import Mypage from "./pages/Mypage";
 import { useAuth } from "./compornents/useAuth";
 
-
-const App = () => {
+const App: VFC = () => {
   const { IsAuth } = useAuth();
 
   return (
@@ -25,8 +25,10 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/login"
-          element={IsAuth ? <Navigate to="/" /> : < Login />} />
+        <Route
+          path="/login"
+          element={IsAuth ? <Navigate to="/" /> : <Login />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/new" element={<New />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -35,7 +37,7 @@ const App = () => {
         <Route path="*" element={<Page404 />} />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
 export default App;

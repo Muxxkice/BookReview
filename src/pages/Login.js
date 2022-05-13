@@ -1,3 +1,4 @@
+import { VFC } from "react";
 import {
 	Link
 	, useNavigate
