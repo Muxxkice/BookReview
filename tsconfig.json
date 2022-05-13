@@ -6,7 +6,7 @@
     "module": "ES2015",
     "target": "es5",
     "allowSyntheticDefaultImports": true,
-    "jsx": "react"
+    "jsx": "react",
   },
-  "files": ["App.tsx", "LikeButton.tsx", "reportWebVitals.ts"]
+  "files": ["App.tsx","userApi.ts","index.ts", "bookApi.ts" ,"LikeButton.tsx","Loading.tsx", "reportWebVitals.ts"]
 }

@@ -1,9 +1,3 @@
-import {
-	Link
-	, useNavigate
-} from "react-router-dom";
-import axios from "axios";
-
 
 import { useState, useEffect } from "react"
 import { useCookies } from "react-cookie";
@@ -34,20 +28,6 @@ export const useAuth = (props) => {
         setUserName(null);
     })();
 },[IsAuth]);
-	// useEffect(() => {
-	// 	//try
-	// 	(async () => {
-	// 		if (IsAuth) {
-
-	// 		}
-
-	// 	})()
-	// 	console.log('IsAuthが更新された' + IsAuth)
-
-	// 	axios
-	// 		.get('/users', config)
-	// 		.then((res) => setUserName(res.data.name))
-	// }, [IsAuth])
 
 	// ログインボタンが押されたら発火 data
 	const onSubmitLogin = async (data) => {

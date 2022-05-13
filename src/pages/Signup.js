@@ -1,22 +1,14 @@
 import axios from 'axios';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import { signupUser } from '../api/userApi'
 
 export const Signup = () => {
-	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
-	const navigate = useNavigate()
 	const { register, formState: { errors }, handleSubmit } = useForm()
 
 	const onSubmit = (data) => {
-		const newUser = data;
-		console.log(newUser)
-		axios
-			.post(`${baseUrl}/users`, newUser)
-			.then((res) => {
-				console.log(res)
-				navigate("/login")
-			})
-			.catch(() => alert('ログインできませんでした'))
+		signupUser(data);
 	};
 
 	return (
