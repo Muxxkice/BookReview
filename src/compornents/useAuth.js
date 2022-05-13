@@ -12,7 +12,6 @@ export const useAuth = (props) => {
 	// cookiesが更新されたらログイン判定
 	//ログイン状態で/loginにいると/に飛ぶ
 	useEffect(() => {
-		// setIsAuth(cookies.userToken);
 		setDefaultHeader({ Authorization: `Bearer ${cookies.userToken}` })
 		setIsAuth(!!cookies.userToken);
 		console.log('cookiesが更新された')

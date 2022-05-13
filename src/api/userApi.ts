@@ -1,12 +1,10 @@
 import axios from "axios";
-import { useAuth } from "../compornents/useAuth"
 
 export const signin = (user) => {
   return axios.post("/signin", user);
 };
 
 export const getUser = () => {
-  console.log(axios);
   return axios.get("/users");
 };
 

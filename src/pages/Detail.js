@@ -1,9 +1,6 @@
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
-import { useAuth } from "../compornents/useAuth"
 import { useReview } from "../compornents/useReview"
 
 export const Detail = () => {
@@ -11,6 +8,7 @@ export const Detail = () => {
 	const { review } = useReview();
 	const navigate = useNavigate();
 
+	console.log(review)
 	const review_map = review.map((user) => {
 		console.log(user.isMine)
 		return (
@@ -27,7 +25,6 @@ export const Detail = () => {
 				</dl>
 				{ user.isMine && (<button onClick={() => { navigate(`/edit/${id}`) }}>編集</button>)}
 			</div >
-
 		)
 	})
 
@@ -35,10 +32,9 @@ export const Detail = () => {
 	return (
 		<div className="wrapper">
 			<h1>書籍レビューの詳細</h1>
-			<div className="review_container">
+			<div>
 				{review_map}
 			</div>
-			{/* <button onClick={() => { navigate(`/edit/${id}`) }}>編集</button> */}
 			<Link to="/">トップ</Link>
 			<Link to="/mypage">マイページ</Link>
 		</div>

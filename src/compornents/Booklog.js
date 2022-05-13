@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import { useAuth } from "./useAuth"
 import LikeButton from "./LikeButton";
 import useReview from "./useReview";
+import {getReview} from "../api/bookApi"
 
 const Booklog = () => {
+	const { id } = useParams();
 	const { bookList, setBookList } = useReview()
 	const navigate = useNavigate();
 	const { IsAuth } = useAuth();
@@ -21,6 +23,7 @@ const Booklog = () => {
 				<dd className="line_wrap">{user.detail}</dd>
 				<button className="secondary_btn"
 					onClick={() => {
+						getReview(user.id)
 						navigate(`/detail/${user.id}`)
 					}}
 				>詳細</button>
@@ -29,12 +32,14 @@ const Booklog = () => {
 					<dd className="line_wrap">{user.review}</dd>
 					<dt>レビュワー</dt>
 					<dd>{user.reviewer}</dd>
-					{IsAuth &&	<LikeButton />}
+					{IsAuth && <LikeButton />}
 				</div>
 			</div >
 		)
 	})
 
+
+	//ページの更新変更予定
 	const nextPage = () => {
 		axios
 			.get(`/public/books?offset=${bookCount}`)
@@ -47,9 +52,9 @@ const Booklog = () => {
 			})
 			.catch((e) => console.log(e))
 	}
-	
+
 	const backPage = () => {
-		if (bookCount>= 0) {
+		if (bookCount >= 0) {
 			const count = bookCount;
 			setBookCount(count - 10);
 			console.log(bookCount);

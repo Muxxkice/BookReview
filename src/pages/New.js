@@ -5,30 +5,17 @@ import {
 } from "react-router-dom";
 import { useParams } from "react-router-dom"
 
-
+import{newbook} from "../api/bookApi"
 import useAuth from "../compornents/useAuth"
 
 export const New = () => {
 	const { register, handleSubmit, errors } = useForm();
-	const baseUrl = "https://api-for-missions-and-railways.herokuapp.com"
 	const { cookies, userName } = useAuth()
 	const navigate = useNavigate();
 	const { id } = useParams();
 
 	const onSubmit = (data) => {
-		console.log(data)
-		console.log(cookies.userToken)
-		const config = {
-			headers: {
-				Authorization: `Bearer ${cookies.userToken}`
-			}
-		}
-		axios
-			.post(`${baseUrl}/books`, data, config)
-			.then((res) => {
-				console.log(res)
-				navigate(`/detail/${id}`)
-			})
+  newbook(data)
 	}
 
 	return (
