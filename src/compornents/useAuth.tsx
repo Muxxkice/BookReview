@@ -18,17 +18,17 @@ export const useAuth = (props) => {
 	}, [cookies])
 
 	useEffect(() => {
-    (async () => {
-        if (IsAuth) {
-            const res = await getUser();
-            setUserName(res.data.name);
-            return;
-        }
-        setUserName(null);
-    })();
-},[IsAuth]);
+		(async () => {
+			if (IsAuth) {
+				const res = await getUser();
+				setUserName(res.data.name);
+				return;
+			}
+			setUserName(null);
+		})();
+	}, [IsAuth]);
 
-	// ログインボタンが押されたら発火 data
+
 	const onSubmitLogin = async (data) => {
 		const user = data;
 		const res = await signin(user)

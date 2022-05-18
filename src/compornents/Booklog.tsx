@@ -14,6 +14,7 @@ const Booklog = () => {
 	const { IsAuth } = useAuth();
 	const [bookCount, setBookCount] = useState(10); //本の取得
 
+
 	const User_map = bookList.map((user) => {
 		return (
 			<div key={user.id} className="booklog_content">
@@ -38,13 +39,11 @@ const Booklog = () => {
 		)
 	})
 
-
 	//ページの更新変更予定
 	const nextPage = () => {
 		axios
 			.get(`/public/books?offset=${bookCount}`)
 			.then((res) => {
-				// const books = Object.assign({}, bookList)
 				const newbooks = res.data
 				setBookCount(bookCount + 10)
 				setBookList(newbooks)

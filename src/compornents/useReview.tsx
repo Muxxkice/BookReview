@@ -12,13 +12,13 @@ export const useReview = () => {
 	const [review, setReview] = useState([]);
 	const [bookList, setBookList] = useState([]);
 
-useEffect(()=>{
-( async ()=> {
-	const res = await getReview()
-		console.log(res)
-		setReview(Array(res.data))
-})();
-},[])
+	useEffect(() => {
+		(async () => {
+			const res = await getReview()
+			console.log(res)
+			setReview(Array(res.data))
+		})();
+	}, [])
 
 	useEffect(() => {
 		(async () => {

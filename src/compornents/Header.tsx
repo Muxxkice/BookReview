@@ -26,7 +26,7 @@ export const Header = () => {
 			<p>user:{userName}</p>
 			<nav className="header_nav">
 				<ul>
-					<li><Link to="profile">プロフィール編集</Link></li>
+					<li><Link to="/profile">プロフィール編集</Link></li>
 					<li><Link to="/new">書籍レビュー登録</Link></li>
 					<li><Link to="/mypage">マイページ</Link></li>
 					{pathname && <button className="primary_btn"><Link to="/">トップに戻る</Link></button>}
@@ -44,7 +44,6 @@ export const Header = () => {
 						<button><Link to="/mypage">新規登録</Link></button>
 					</ul>
 				</nav>
-
 			</header>
 		)
 	}

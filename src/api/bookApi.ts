@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-//const { id } = useParams();
 
 export const deleteReview = (id) => {
-	console.log('削除')
 	axios
 		.delete(`books/${id}`)
 		.then((data) => {

@@ -8,15 +8,16 @@ import { useAuth } from "../compornents/useAuth"
 import { useReview } from "../compornents/useReview"
 import { deleteReview } from "../api/bookApi"
 
-export const editReview = (id,article) => {
-	axios
-		.put(`/books/${id}`, article)
-		.then((res) => {
-			console.log(res)
-			//	navigate(`/detail/${id}`)
-		})
-		.catch(e => console.log(e))
-}
+// export const editReview = () => {
+// 	axios
+// 		.put(`/books/${id}`, article)
+// 		.then((res) => {
+// 			console.log(res)
+// 			//	navigate(`/detail/${id}`)
+// 		})
+// 		.catch(e => console.log(e))
+// }
+
 
 export const Edit = () => {
 	const { register, handleSubmit } = useForm();
@@ -49,9 +50,11 @@ const onClickEdit = () => {
 		.catch(e => console.log(e))
 	}
 
-	const onClickDelete = () => {
-		deleteReview(id)
+	const onClickDelete =()=>{
+		console.log(id)
+	deleteReview(id)
 	}
+
 	return (
 		<div className="wrapper">
 			<h1>書籍レビューの編集画面</h1>

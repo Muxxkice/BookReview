@@ -8,7 +8,6 @@ export const Detail = () => {
 	const { review } = useReview();
 	const navigate = useNavigate();
 
-	console.log(review)
 	const review_map = review.map((user) => {
 		console.log(user.isMine)
 		return (

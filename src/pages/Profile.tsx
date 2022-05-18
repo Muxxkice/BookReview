@@ -13,7 +13,7 @@ const Profile = () => {
 
 	return (
 		<>
-			<div class="wrapper">
+			<div class="review_container">
 				<h1>ユーザー情報編集</h1>
 				<p>現在の名前</p>
 				<p>{userName}</p>
