@@ -10,7 +10,6 @@ export const Mypage = () => {
 	const { bookList } = useReview()
 	const { onSubmitLogin, userName } = useAuth();
 	const navigate = useNavigate();
-	// const [personal_booklList, setPersonal_BooklList] = useState([]);
 
 	const personal_booklog_map = bookList.map((user) => {
 		if (user.reviewer == userName) {

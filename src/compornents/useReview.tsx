@@ -7,6 +7,16 @@ import {
 	getReview, getBooklist
 } from "../api/bookApi"
 
+type BookType = {
+	id: string;
+	title: string;
+	url: string;
+	detail: string;
+	review: string;
+	reviewer: string;
+	isMine:boolean;
+}
+
 export const useReview = () => {
 	const { id } = useParams();
 	const [review, setReview] = useState([]);

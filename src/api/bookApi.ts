@@ -1,6 +1,14 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+type BookType = {
+	id: string;
+	title: string;
+	url: string;
+	detail: string;
+	review: string;
+	reviewer: string;
+	isMine:boolean;
+}
 export const deleteReview = (id) => {
 	axios
 		.delete(`books/${id}`)
@@ -22,7 +30,7 @@ export const newbook =(data) => {
 //書籍一覧取得
 export const getBooklist = () => {
 	return axios
-		.get(`/public/books`)
+		.get<Array<BookType>>(`/public/books`)
 		.catch((e) => console.log(e))
 }
 

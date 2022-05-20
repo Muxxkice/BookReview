@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from "react";
 
 export const LikeButton = () => {
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState<boolean>(false);
 
   const onClickLiked = () => {
     console.log("like");
