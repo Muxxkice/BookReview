@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
+import Loading from "../compornents/Loading";
 
 import { useReview } from "../compornents/useReview"
 
@@ -8,6 +9,11 @@ export const Detail = () => {
 	const { review } = useReview();
 	const navigate = useNavigate();
 
+	console.log(review)
+	if(review.length == 0) {
+	return <Loading />
+	}
+	
 	const review_map = review.map((user) => {
 		console.log(user.isMine)
 		return (

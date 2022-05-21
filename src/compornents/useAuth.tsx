@@ -42,7 +42,7 @@ export const useAuth = (props) => {
     removeCookie("userToken");
   };
 
-  return { onSubmitLogin, cookies, deleteToken, userName, IsAuth };
+  return { onSubmitLogin, cookies, deleteToken, userName, IsAuth, setUserName};
 };
 
 export default useAuth;

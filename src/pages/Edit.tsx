@@ -2,21 +2,21 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 import { useAuth } from "../compornents/useAuth";
 import { useReview } from "../compornents/useReview";
 import { deleteReview } from "../api/bookApi";
 
-// export const editReview = () => {
-// 	axios
-// 		.put(`/books/${id}`, article)
-// 		.then((res) => {
-// 			console.log(res)
-// 			//	navigate(`/detail/${id}`)
-// 		})
-// 		.catch(e => console.log(e))
-// }
+export const editReview = (id, article) => {
+  return axios
+    .put(`/books/${id}`, article)
+    .then((res) => {
+      console.log(res);
+      //	navigate(`/detail/${id}`)
+    })
+    .catch((e) => console.log(e));
+};
 
 type BookType = {
   title: string;
@@ -24,6 +24,7 @@ type BookType = {
   detail: string;
   review: string;
 };
+
 export const Edit = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -32,12 +33,12 @@ export const Edit = () => {
   const { review } = useReview();
   const [newReview, setNewReview] = useState([]);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: SetStateAction<any[]>) => {
     console.log(data);
     setNewReview(data);
   };
 
-  const article:BookType = {
+  const article: BookType = {
     title: newReview.title,
     url: newReview.url,
     detail: newReview.detail,
@@ -45,6 +46,8 @@ export const Edit = () => {
   };
 
   const onClickEdit = () => {
+    //const data = article
+    //	const res = editReview(id,data)
     axios
       .put(`/books/${id}`, article)
       .then((res) => {
