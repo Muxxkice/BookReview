@@ -40,14 +40,24 @@ export const getPublicBooklist = () => {
 };
 
 //詳細
-export const getReview = (id) => {
-  //const { setReview } = useReview();
+export const getReview = (id ) => {
   console.log(id);
-  return axios
+  return (
+		axios
     .get(`/books/${id}`)
-    .then((res) => {
-      console.log(res);
-     // setReview(Array(res.data));
-    })
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(e))
+	)
 };
+//追加の本の情報
+export const getReviewMore = (offset) => {
+  console.log(offset)
+    return (
+      axios
+      .get(`/books?offset=${offset}`)
+      .catch((e) => console.log(e))
+    )
+
+
+};
+///books/public?offset=20 認証ユーザー
+

@@ -18,7 +18,10 @@ export const getUser = () => {
   return axios.get("/users");
 };
 
-export const changeUserName = (data) => {
+type UserType ={
+  name:string;
+}
+export const changeUserName = (data:UserType) => {
   const article = { name: data.name };
   return (
     axios

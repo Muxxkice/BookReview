@@ -3,12 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 import LikeButton from "./LikeButton";
 import useReview from "./useReview";
+import { onClickGetReview } from "./useReview";
 import { getReview } from "../api/bookApi";
+import { useBookReview } from "../compornents/useBookReview";
 
 const Booklog = () => {
-  const { bookList } = useReview();
+  const { bookList, setReview } = useReview();
+  const { isEnd, fetchMore, data } = useBookReview();
   const navigate = useNavigate();
   const { IsAuth } = useAuth();
+
+  const onClickGetReview = async (id) => {
+    const res = await getReview(id);
+    console.log(Array(res.data));
+    setReview(Array(res.data));
+  };
 
   const User_map = bookList.map((user) => {
     return (
@@ -20,7 +29,7 @@ const Booklog = () => {
         <button
           className="secondary_btn"
           onClick={() => {
-            getReview(user.id);
+            onClickGetReview(user.id);
             navigate(`/detail/${user.id}`);
           }}
         >

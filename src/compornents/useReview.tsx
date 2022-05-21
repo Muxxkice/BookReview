@@ -16,18 +16,8 @@ type BookType = {
 };
 
 export const useReview = () => {
-  const { id } = useParams();
   const [review, setReview] = useState([]);
   const [bookList, setBookList] = useState([]);
-
-  //詳細情報
-  // useEffect(() => {
-  // 	(async () => {
-  // 		const res = await getReview()
-  // 		console.log(res)
-  // 		setReview(Array(res.data))
-  // 	})();
-  // }, [])
 
   useEffect(() => {
     (async () => {

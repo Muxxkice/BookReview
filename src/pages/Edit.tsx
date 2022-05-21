@@ -29,22 +29,21 @@ export const Edit = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { id } = useParams();
-  const { cookies } = useAuth();
-  const { review } = useReview();
   const [newReview, setNewReview] = useState([]);
 
-  const onSubmit = (data: SetStateAction<any[]>) => {
+  const onSubmit = (data: BookType) => {
     console.log(data);
     setNewReview(data);
   };
 
-  const article: BookType = {
+  const article = {
     title: newReview.title,
     url: newReview.url,
     detail: newReview.detail,
     review: newReview.review,
   };
 
+  //detailの表示を直せたら、コンポート切り分ける
   const onClickEdit = () => {
     //const data = article
     //	const res = editReview(id,data)

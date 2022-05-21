@@ -13,7 +13,9 @@ const Profile = () => {
 
   const onSubmit = async (data: string) => {
     const res = await changeUserName(data);
-    setUserName(res.data.name);
+		if(res){
+			setUserName(res.data.name);
+		}
   };
 
   return (
