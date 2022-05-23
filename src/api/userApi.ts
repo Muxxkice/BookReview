@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const signupUser = (newUser) => {
-  axios
+  return axios
     .post(`/users`, newUser)
     .then((res) => {
       console.log(res.statusText);

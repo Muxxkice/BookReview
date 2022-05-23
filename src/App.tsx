@@ -18,8 +18,10 @@ import Mypage from "./pages/Mypage";
 import { useAuth } from "./compornents/useAuth";
 
 const App: VFC = () => {
-  const { IsAuth } = useAuth();
-
+  const { IsAuth, test } = useAuth();
+  if (!test) {
+    return null;
+  }
   return (
     <Router>
       <Routes>

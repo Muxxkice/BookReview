@@ -13,7 +13,7 @@ export const Signup = () => {
 
   const onSubmit = async (data) => {
     const res = await signupUser(data);
-    if (res != "OK") {
+    if (res === "OK") {
       navigate("/login");
     }
     console.log(res);

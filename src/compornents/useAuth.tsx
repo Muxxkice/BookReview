@@ -5,11 +5,11 @@ import { useCookies } from "react-cookie";
 import { signin, getUser } from "../api/userApi";
 import { setDefaultHeader } from "../api";
 
-
-export const useAuth = (props) => {
+export const useAuth = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
   const [userName, setUserName] = useState(); //ユーザー名
   const [IsAuth, setIsAuth] = useState(false); //ログイン判定
+  const [test, setTest] = useState(false);
   //const navigate = useNavigate();
 
   // cookiesが更新されたらログイン判定
@@ -17,6 +17,7 @@ export const useAuth = (props) => {
   useEffect(() => {
     setDefaultHeader({ Authorization: `Bearer ${cookies.userToken}` });
     setIsAuth(!!cookies.userToken);
+    setTest(true);
     console.log("cookiesが更新された");
   }, [cookies]);
 
@@ -42,7 +43,15 @@ export const useAuth = (props) => {
     removeCookie("userToken");
   };
 
-  return { onSubmitLogin, cookies, deleteToken, userName, IsAuth, setUserName};
+  return {
+    onSubmitLogin,
+    cookies,
+    deleteToken,
+    userName,
+    IsAuth,
+    setUserName,
+    test,
+  };
 };
 
 export default useAuth;

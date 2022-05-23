@@ -13,12 +13,6 @@ const Booklog = () => {
   const navigate = useNavigate();
   const { IsAuth } = useAuth();
 
-  const onClickGetReview = async (id) => {
-    const res = await getReview(id);
-    console.log(Array(res.data));
-    setReview(Array(res.data));
-  };
-
   const User_map = bookList.map((user) => {
     return (
       <div key={user.id} className="booklog_content">
@@ -29,7 +23,6 @@ const Booklog = () => {
         <button
           className="secondary_btn"
           onClick={() => {
-            onClickGetReview(user.id);
             navigate(`/detail/${user.id}`);
           }}
         >
