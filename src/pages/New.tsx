@@ -16,6 +16,8 @@ export const New = () => {
 
 	const onSubmit = (data) => {
   newbook(data)
+	console.log(data)
+	    //	navigate(`/detail/${id}`)
 	}
 
 	return (
