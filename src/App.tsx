@@ -26,7 +26,8 @@ const App: VFC = () => {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route
+        path="/signup" element={IsAuth? <Navigate to="/" />:<Signup />} />
         <Route
           path="/login"
           element={IsAuth ? <Navigate to="/" /> : <Login />}

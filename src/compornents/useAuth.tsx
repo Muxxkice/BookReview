@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import { signin, getUser } from "../api/userApi";
+import { signin, getUser, signup } from "../api/userApi";
 import { setDefaultHeader } from "../api";
 
 export const useAuth = () => {
@@ -10,7 +10,6 @@ export const useAuth = () => {
   const [userName, setUserName] = useState(); //ユーザー名
   const [IsAuth, setIsAuth] = useState(false); //ログイン判定
   const [test, setTest] = useState(false);
-  //const navigate = useNavigate();
 
   // cookiesが更新されたらログイン判定
   //ログイン状態で/loginにいると/に飛ぶ
@@ -32,10 +31,16 @@ export const useAuth = () => {
     })();
   }, [IsAuth]);
 
-  const onSubmitLogin = async (data) => {
-    const user = data;
+  const onSubmitLogin = async (user) => {
     const res = await signin(user);
     return setCookie("userToken", res.data.token);
+  };
+
+  const signupUser = async (newUser) => {
+    const res = await signup(newUser);
+    console.log(res.data.token);
+    return setCookie("userToken", res.data.token);
+
   };
 
   const deleteToken = () => {
@@ -45,6 +50,7 @@ export const useAuth = () => {
 
   return {
     onSubmitLogin,
+    signupUser,
     cookies,
     deleteToken,
     userName,

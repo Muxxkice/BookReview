@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { signupUser } from "../api/userApi";
+import { Link } from "react-router-dom";
+
+import { useAuth } from "../compornents/useAuth";
 
 export const Signup = () => {
-  const navigate = useNavigate();
+  const { signupUser } = useAuth();
 
   const {
     register,
@@ -11,12 +12,8 @@ export const Signup = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    const res = await signupUser(data);
-    if (res === "OK") {
-      navigate("/login");
-    }
-    console.log(res);
+  const onSubmit = (data) => {
+    signupUser(data);
   };
 
   return (

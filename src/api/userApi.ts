@@ -1,17 +1,15 @@
 import axios from "axios";
 
-export const signupUser = (newUser) => {
+export const signup = (newUser) => {
   return axios
     .post(`/users`, newUser)
-    .then((res) => {
-      console.log(res.statusText);
-      return <string>res.statusText;
-    })
-    .catch(() => alert("ログインできませんでした"));
+    .catch(() => alert("登録できませんでした"));
 };
 
 export const signin = (user) => {
-  return axios.post("/signin", user);
+  return axios
+  .post("/signin", user)
+  .catch(() => alert("ログインできませんでした"));
 };
 
 export const getUser = () => {
@@ -26,9 +24,6 @@ export const changeUserName = (data:UserType) => {
   return (
     axios
       .put(`/users`, article)
-      // .then((res) => {
-      //   console.log(res)
-      // })
       .catch(() => alert("変更できませんでした"))
   );
 };

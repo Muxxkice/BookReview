@@ -3,7 +3,7 @@ import {useBookReview} from "./useBookReview"
 export const Reviewlog = () => {
   const { isEnd, fetchMore, data } = useBookReview();
 
-  const data_map = data.map((review,index) => {
+  const data_map = data.map((review,index:number) => {
     return (
       <div key={index} className="booklog_content">
         <dt>タイトル</dt>
