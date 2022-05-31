@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import React from "react";
 import {
   Routes,
   Route,
@@ -17,7 +17,7 @@ import Edit from "./pages/Edit";
 import Mypage from "./pages/Mypage";
 import { useAuth } from "./compornents/useAuth";
 
-const App: VFC = () => {
+const App = () => {
   const { IsAuth, test } = useAuth();
   if (!test) {
     return null;
@@ -25,9 +25,11 @@ const App: VFC = () => {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
-        path="/signup" element={IsAuth? <Navigate to="/" />:<Signup />} />
+          path="/signup"
+          element={IsAuth ? <Navigate to="/" /> : <Signup />}
+        />
         <Route
           path="/login"
           element={IsAuth ? <Navigate to="/" /> : <Login />}

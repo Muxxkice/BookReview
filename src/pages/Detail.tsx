@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Loading from "../compornents/Loading";
 import { getReview } from "../api/bookApi";
 
 export const Detail = () => {
