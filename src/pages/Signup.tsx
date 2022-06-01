@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 import { useAuth } from "../compornents/useAuth";
-
+import { UserType } from "../types/type";
 export const Signup = () => {
   const { signupUser } = useAuth();
 
@@ -13,7 +13,7 @@ export const Signup = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: UserType) => {
     signupUser(data);
   };
 

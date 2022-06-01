@@ -1,17 +1,18 @@
-import { VFC } from "react";
+import React from "react";
 import {
 	Link
 } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { useAuth } from "../compornents/useAuth"
+import { UserType } from "../types/type";
 
 
 const Login = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
 	const { onSubmitLogin } = useAuth();
 
-	const onSubmit = (data) => {
+	const onSubmit = (data:UserType) => {
 		onSubmitLogin(data)
 	};
 

@@ -5,7 +5,7 @@ import { getReviewMore } from "../api/bookApi";
 export const useBookReview = () => {
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(0);
-  const [data, setData] = useState<Array>([]);
+  const [data, setData] = useState([]);
 
   const fetchMore = async () => {
     const bookReview = await getReviewMore(offset);

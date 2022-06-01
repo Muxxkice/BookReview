@@ -1,5 +1,5 @@
+import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useState, useEffect } from "react"
 
 
 import Header from "../compornents/Header"
@@ -12,7 +12,7 @@ export const Mypage = () => {
 	const navigate = useNavigate();
 
 	const personal_booklog_map = bookList.map((user) => {
-		if (user.reviewer == userName) {
+		if (user.reviewer === userName) {
 			return (
 				<div key={user.id} className="booklog_content">
 					<dt>タイトル</dt>

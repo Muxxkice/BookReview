@@ -1,12 +1,12 @@
 import axios from "axios";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { SetStateAction, useState } from "react";
 
-import { useAuth } from "../compornents/useAuth";
-import { useReview } from "../compornents/useReview";
 import { deleteReview } from "../api/bookApi";
+import { BookType } from "../types/type";
 
 export const editReview = (id, article) => {
   return axios
@@ -18,12 +18,6 @@ export const editReview = (id, article) => {
     .catch((e) => console.log(e));
 };
 
-type BookType = {
-  title: string;
-  url: string;
-  detail: string;
-  review: string;
-};
 
 export const Edit = () => {
   const { register, handleSubmit } = useForm();

@@ -1,16 +1,20 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getReview } from "../api/bookApi";
+import { useAuth } from "../compornents/useAuth";
 
 export const Detail = () => {
   const { id } = useParams();
+  const { isAuth } = useAuth();
   const navigate = useNavigate();
   const [user, setReview] = useState([]);
+  
 
   useEffect(() => {
     (async () => {
-      const res = await getReview(id);
+      const res = await getReview(id, isAuth);
       console.log(res.data);
       setReview(res.data);
     })();
@@ -45,7 +49,7 @@ export const Detail = () => {
   return (
     <div className="wrapper">
       <h1>書籍レビューの詳細</h1>
-       { review_map }
+      {review_map}
       <div>{review_map}</div>
       <Link to="/">トップ</Link>
       <Link to="/mypage">マイページ</Link>

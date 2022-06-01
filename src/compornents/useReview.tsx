@@ -1,27 +1,18 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 import { useAuth } from "./useAuth";
 import { getReview, getBooklist } from "../api/bookApi";
+import { BookType } from "../types/type";
 
-type BookType = {
-  id: string;
-  title: string;
-  url: string;
-  detail: string;
-  review: string;
-  reviewer: string;
-  isMine: boolean;
-};
 
 export const useReview = () => {
   const [review, setReview] = useState([]);
   const [bookList, setBookList] = useState([]);
+  const { IsAuth } = useAuth();
 
   useEffect(() => {
     (async () => {
-      const res = await getBooklist(); //認証なし
+      const res = await getBooklist(IsAuth);
       setBookList(res.data);
     })();
   }, []);

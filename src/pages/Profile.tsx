@@ -1,9 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../compornents/useAuth";
 import { changeUserName } from "../api/userApi";
+import { UserType } from "../types/type";
 
-const Profile = () => {
+export const Profile = () => {
   const { userName, setUserName } = useAuth();
   const {
     register,
@@ -11,16 +13,16 @@ const Profile = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = async (data: string) => {
+  const onSubmit = async (data :UserType) => {
     const res = await changeUserName(data);
-		if(res){
-			setUserName(res.data.name);
-		}
+    if (res) {
+      setUserName(res.data.name);
+    }
   };
 
   return (
     <>
-      <div class="review_container">
+      <div className="review_container">
         <h1>ユーザー情報編集</h1>
         <p>現在の名前</p>
         <p>{userName}</p>

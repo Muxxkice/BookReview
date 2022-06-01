@@ -1,29 +1,31 @@
 import axios from "axios";
 
-export const signup = (newUser) => {
+type UserType = {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export const signup = (newUser: UserType) => {
   return axios
     .post(`/users`, newUser)
     .catch(() => alert("登録できませんでした"));
 };
 
-export const signin = (user) => {
+export const signin = (user: UserType) => {
   return axios
-  .post("/signin", user)
-  .catch(() => alert("ログインできませんでした"));
+    .post("/signin", user)
+    .catch(() => alert("ログインできませんでした"));
 };
 
 export const getUser = () => {
   return axios.get("/users");
 };
 
-type UserType ={
-  name:string;
-}
-export const changeUserName = (data:UserType) => {
+
+export const changeUserName = (data: UserType) => {
   const article = { name: data.name };
-  return (
-    axios
-      .put(`/users`, article)
-      .catch(() => alert("変更できませんでした"))
-  );
+  return axios
+    .put(`/users`, article)
+    .catch(() => alert("変更できませんでした"));
 };

@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useReview } from "../compornents/useReview";
-import { useParams } from "react-router-dom";
 
 type BookType = {
   id: string;
@@ -11,7 +9,7 @@ type BookType = {
   reviewer: string;
   isMine: boolean;
 };
-export const deleteReview = (id) => {
+export const deleteReview = (id: string) => {
   axios
     .delete(`books/${id}`)
     .then((data) => {
@@ -20,7 +18,7 @@ export const deleteReview = (id) => {
     .catch((e) => console.log(e));
 };
 
-export const newbook = (data) => {
+export const newbook = (data: BookType) => {
   axios.post(`/books`, data).then((res) => {
     console.log(res);
     return res.statusText;
@@ -29,10 +27,18 @@ export const newbook = (data) => {
 };
 
 //書籍一覧取得
-export const getBooklist = () => {
-  return axios
-    .get<Array<BookType>>(`/public/books`)
-    .catch((e) => console.log(e));
+export const getBooklist = (IsAuth:boolean) => {
+  if (IsAuth) {
+    return axios
+      .get<Array<BookType>>(`/books`)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
+  } else {
+    return axios
+      .get(`/public/books`)
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
+  }
 };
 
 export const getPublicBooklist = () => {
@@ -40,24 +46,13 @@ export const getPublicBooklist = () => {
 };
 
 //詳細
-export const getReview = (id ) => {
+export const getReview = (id: string) => {
   console.log(id);
-  return (
-		axios
-    .get(`/books/${id}`)
-    .catch((e) => console.log(e))
-	)
+  return axios.get(`/books/${id}`).catch((e) => console.log(e));
 };
 //追加の本の情報
-export const getReviewMore = (offset) => {
-  console.log(offset)
-    return (
-      axios
-      .get(`/books?offset=${offset}`)
-      .catch((e) => console.log(e))
-    )
-
-
+export const getReviewMore = (offset:number) => {
+  console.log(offset);
+  return axios.get(`/books?offset=${offset}`).catch((e) => console.log(e));
 };
 ///books/public?offset=20 認証ユーザー
-

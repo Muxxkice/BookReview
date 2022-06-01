@@ -1,9 +1,11 @@
+import React from "react";
 import {useBookReview} from "./useBookReview"
+import { BookType } from "../types/type";
 
 export const Reviewlog = () => {
   const { isEnd, fetchMore, data } = useBookReview();
 
-  const data_map = data.map((review,index:number) => {
+  const data_map = data.map((review:BookType,index:number) => {
     return (
       <div key={index} className="booklog_content">
         <dt>タイトル</dt>

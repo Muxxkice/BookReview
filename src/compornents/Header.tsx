@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
@@ -16,13 +17,14 @@ export const Header = () => {
 	}
 
 	useEffect(() => {
-		if (location.pathname == "/") {
+		if (location.pathname === "/") {
 			setPathname(false)
 		}
 	}, [])
 
 	if (IsAuth) {
-		return (<header>
+		return (
+		<header>
 			<p>user:{userName}</p>
 			<nav className="header_nav">
 				<ul>

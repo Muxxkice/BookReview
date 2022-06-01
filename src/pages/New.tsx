@@ -1,4 +1,4 @@
-import axios from "axios";
+import React from "react";
 import { useForm } from "react-hook-form";
 import {
 	Link, useNavigate
@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom"
 
 import{newbook} from "../api/bookApi"
 import useAuth from "../compornents/useAuth"
+import { BookType } from "../types/type";
 
 export const New = () => {
 	const { register, handleSubmit, errors } = useForm();
@@ -14,7 +15,7 @@ export const New = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 
-	const onSubmit = (data) => {
+	const onSubmit = (data:BookType) => {
   newbook(data)
 	console.log(data)
 	    //	navigate(`/detail/${id}`)
