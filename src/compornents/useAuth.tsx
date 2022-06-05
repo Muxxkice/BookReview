@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 
 import { signin, getUser, signup } from "../api/userApi";
 import { setDefaultHeader } from "../api";
+import { UserType, TokenType } from "../types/type";
 
 export const useAuth = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -31,16 +32,16 @@ export const useAuth = () => {
     })();
   }, [IsAuth]);
 
-  const onSubmitLogin = async (user) => {
-    const res = await signin(user);
-    return setCookie("userToken", res.data.token);
+  const signupUser = async (newUser: UserType) => {
+    const res = await signup(newUser);
+    console.log(res);
+    return setCookie("userToken", res);
   };
 
-  const signupUser = async (newUser) => {
-    const res = await signup(newUser);
-    console.log(res.data.token);
-    return setCookie("userToken", res.data.token);
-
+  const onSubmitLogin = async (user: UserType) => {
+    const res = await signin(user);
+    console.log(res);
+    return setCookie("userToken", res);
   };
 
   const deleteToken = () => {

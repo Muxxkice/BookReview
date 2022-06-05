@@ -13,7 +13,7 @@ export const Profile = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = async (data :UserType) => {
+  const onSubmit = async (data: UserType) => {
     const res = await changeUserName(data);
     if (res) {
       setUserName(res.data.name);

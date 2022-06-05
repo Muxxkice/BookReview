@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useAuth } from "./useAuth";
 import { getReview, getBooklist } from "../api/bookApi";
-import { BookType } from "../types/type";
-
+import { BookType, APIUserResult, TokenType } from "../types/type";
 
 export const useReview = () => {
   const [review, setReview] = useState([]);

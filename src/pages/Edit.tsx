@@ -8,7 +8,10 @@ import { SetStateAction, useState } from "react";
 import { deleteReview } from "../api/bookApi";
 import { BookType } from "../types/type";
 
-export const editReview = (id, article) => {
+export const editReview = (
+  id: string,
+  article: Pick<BookType, "title" | "url" | "detail" | "review">,
+) => {
   return axios
     .put(`/books/${id}`, article)
     .then((res) => {
@@ -17,7 +20,13 @@ export const editReview = (id, article) => {
     })
     .catch((e) => console.log(e));
 };
-
+type APIResult = {
+  book: BookType[];
+  title: string;
+  url: string;
+  detailt: string;
+  review: string;
+};
 
 export const Edit = () => {
   const { register, handleSubmit } = useForm();
@@ -25,12 +34,11 @@ export const Edit = () => {
   const { id } = useParams();
   const [newReview, setNewReview] = useState([]);
 
-  const onSubmit = (data: BookType) => {
+  const onSubmit = (data: APIResult<BookType>) => {
     console.log(data);
     setNewReview(data);
   };
-
-  const article = {
+  const article: BookType<APIResult> = {
     title: newReview.title,
     url: newReview.url,
     detail: newReview.detail,

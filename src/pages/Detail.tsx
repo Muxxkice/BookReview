@@ -4,23 +4,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getReview } from "../api/bookApi";
 import { useAuth } from "../compornents/useAuth";
+import { BookType } from "../types/type";
 
 export const Detail = () => {
   const { id } = useParams();
   const { isAuth } = useAuth();
   const navigate = useNavigate();
   const [user, setReview] = useState([]);
-  
 
   useEffect(() => {
     (async () => {
       const res = await getReview(id, isAuth);
-      console.log(res.data);
       setReview(res.data);
     })();
   }, [id]);
 
-  const review_map = (
+  const review_map = (user:BookType) => (
     <div key={user.id}>
       <dl>
         <dt>タイトル</dt>

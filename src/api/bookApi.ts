@@ -1,14 +1,6 @@
 import axios from "axios";
+import { BookType } from "../types/type";
 
-type BookType = {
-  id: string;
-  title: string;
-  url: string;
-  detail: string;
-  review: string;
-  reviewer: string;
-  isMine: boolean;
-};
 export const deleteReview = (id: string) => {
   axios
     .delete(`books/${id}`)
@@ -27,18 +19,23 @@ export const newbook = (data: BookType) => {
 };
 
 //書籍一覧取得
-export const getBooklist = (IsAuth:boolean) => {
+export const getBooklist = (IsAuth) => {
   if (IsAuth) {
-    return axios
-      .get<Array<BookType>>(`/books`)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
-  } else {
-    return axios
-      .get(`/public/books`)
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+    console.log("isaunth");
   }
+  return (
+    axios
+      .get<Array<BookType>>(`/books`)
+      // .then((res) => console.log(res))
+      .catch((e) => console.log(e))
+  );
+  // }
+  // else {
+  //   return axios
+  //     .get<Array<BookType>>(`/public/books`)
+  //     .then((res) => console.log(res))
+  //     .catch((e) => console.log(e));
+  // }
 };
 
 export const getPublicBooklist = () => {
@@ -46,13 +43,14 @@ export const getPublicBooklist = () => {
 };
 
 //詳細
-export const getReview = (id: string) => {
+export const getReview = (id: string, isAuth: boolean) => {
   console.log(id);
-  return axios.get(`/books/${id}`).catch((e) => console.log(e));
+  return axios
+    .get<Array<BookType>>(`/books/${id}`)
+    .catch((e) => console.log(e));
 };
 //追加の本の情報
-export const getReviewMore = (offset:number) => {
-  console.log(offset);
+export const getReviewMore = (offset: number) => {
   return axios.get(`/books?offset=${offset}`).catch((e) => console.log(e));
 };
 ///books/public?offset=20 認証ユーザー

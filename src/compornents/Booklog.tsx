@@ -11,6 +11,7 @@ const Booklog = () => {
   const navigate = useNavigate();
   const { IsAuth } = useAuth();
 
+  console.log(bookList)
   const User_map = bookList.map((book: BookType) => {
     return (
       <div key={book.id} className="booklog_content">

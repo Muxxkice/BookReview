@@ -1,19 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import {
-	Link, useNavigate
+	Link
 } from "react-router-dom";
-import { useParams } from "react-router-dom"
 
 import{newbook} from "../api/bookApi"
-import useAuth from "../compornents/useAuth"
 import { BookType } from "../types/type";
 
 export const New = () => {
-	const { register, handleSubmit, errors } = useForm();
-	const { cookies, userName } = useAuth()
-	const navigate = useNavigate();
-	const { id } = useParams();
+	const { register, handleSubmit, //errors
+} = useForm();
 
 	const onSubmit = (data:BookType) => {
   newbook(data)

@@ -1,31 +1,42 @@
-import axios from "axios";
-
-type UserType = {
-  name: string;
-  email: string;
-  password: string;
-}
+import axios, { AxiosError } from "axios";
+import { UserType, TokenType } from "../types/type";
 
 export const signup = (newUser: UserType) => {
   return axios
     .post(`/users`, newUser)
-    .catch(() => alert("登録できませんでした"));
+    .then((res: TokenType) => {
+      return res.data.token;
+    })
+    .catch((e: AxiosError<{ error: string }>) => {
+      console.log(e);
+      alert("ログインできませんでした");
+    });
 };
 
 export const signin = (user: UserType) => {
   return axios
     .post("/signin", user)
-    .catch(() => alert("ログインできませんでした"));
+    .then((res: TokenType) => {
+      return res.data.token;
+    })
+    .catch((e: AxiosError<{ error: string }>) => {
+      console.log(e);
+      ApiError(e);
+    });
 };
 
 export const getUser = () => {
   return axios.get("/users");
 };
 
-
 export const changeUserName = (data: UserType) => {
   const article = { name: data.name };
   return axios
     .put(`/users`, article)
     .catch(() => alert("変更できませんでした"));
+};
+
+export const ApiError = (error: AxiosError<{ error: string }>) => {
+  console.log(error);
+  alert("ログインできませんでした");
 };
