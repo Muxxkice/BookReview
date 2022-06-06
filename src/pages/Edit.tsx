@@ -3,30 +3,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
-import { deleteReview } from "../api/bookApi";
-import { BookType } from "../types/type";
-
-export const editReview = (
-  id: string,
-  article: Pick<BookType, "title" | "url" | "detail" | "review">,
-) => {
-  return axios
-    .put(`/books/${id}`, article)
-    .then((res) => {
-      console.log(res);
-      //	navigate(`/detail/${id}`)
-    })
-    .catch((e) => console.log(e));
-};
-type APIResult = {
-  book: BookType[];
-  title: string;
-  url: string;
-  detailt: string;
-  review: string;
-};
+import { deleteReview, editReview } from "../api/bookApi";
+import { EditBookType } from "../types/type";
 
 export const Edit = () => {
   const { register, handleSubmit } = useForm();
@@ -34,11 +14,12 @@ export const Edit = () => {
   const { id } = useParams();
   const [newReview, setNewReview] = useState([]);
 
-  const onSubmit = (data: APIResult<BookType>) => {
+  const onSubmit = (data: EditBookType) => {
     console.log(data);
     setNewReview(data);
   };
-  const article: BookType<APIResult> = {
+
+  const article = {
     title: newReview.title,
     url: newReview.url,
     detail: newReview.detail,
@@ -46,16 +27,16 @@ export const Edit = () => {
   };
 
   //detailの表示を直せたら、コンポート切り分ける
-  const onClickEdit = () => {
-    //const data = article
-    //	const res = editReview(id,data)
-    axios
-      .put(`/books/${id}`, article)
-      .then((res) => {
-        console.log(res);
-        navigate(`/detail/${id}`);
-      })
-      .catch((e) => console.log(e));
+  const onClickEdit = async () => {
+    const res = await editReview(id, article);
+    console.log(res);
+    // axios
+    //   .put(`/books/${id}`, article)
+    //   .then((res) => {
+    //     console.log(res);
+    navigate(`/detail/${id}`);
+    //   })
+    //   .catch((e) => console.log(e));
   };
 
   const onClickDelete = () => {

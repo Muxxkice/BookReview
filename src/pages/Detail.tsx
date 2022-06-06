@@ -11,15 +11,16 @@ export const Detail = () => {
   const { isAuth } = useAuth();
   const navigate = useNavigate();
   const [user, setReview] = useState([]);
+  console.log(user);
 
   useEffect(() => {
     (async () => {
-      const res = await getReview(id, isAuth);
-      setReview(res.data);
+      const res = await getReview(id);
+      setReview(res);
     })();
   }, [id]);
 
-  const review_map = (user:BookType) => (
+  const review = (
     <div key={user.id}>
       <dl>
         <dt>タイトル</dt>
@@ -48,8 +49,8 @@ export const Detail = () => {
   return (
     <div className="wrapper">
       <h1>書籍レビューの詳細</h1>
-      {review_map}
-      <div>{review_map}</div>
+      {review}
+      <div>{review}</div>
       <Link to="/">トップ</Link>
       <Link to="/mypage">マイページ</Link>
     </div>
