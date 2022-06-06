@@ -9,10 +9,10 @@ export const useBookReview = () => {
 
   const fetchMore = async () => {
     const bookReview = await getReviewMore(offset);
-		//console.log(bookReview)
-    setData([...data, ...bookReview.data]);
-    setOffset( offset + bookReview.data.length);
-    if (bookReview.data.length < 10) {
+    console.log(bookReview);
+    setData([...data, ...bookReview]);
+    setOffset(offset + bookReview.length);
+    if (bookReview.length < 10) {
       setIsEnd(true);
     }
   };
