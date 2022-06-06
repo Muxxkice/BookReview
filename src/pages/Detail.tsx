@@ -8,10 +8,8 @@ import { BookType } from "../types/type";
 
 export const Detail = () => {
   const { id } = useParams();
-  const { isAuth } = useAuth();
   const navigate = useNavigate();
-  const [user, setReview] = useState([]);
-  console.log(user);
+  const [book, setReview] = useState<BookType>();
 
   useEffect(() => {
     (async () => {
@@ -21,20 +19,20 @@ export const Detail = () => {
   }, [id]);
 
   const review = (
-    <div key={user.id}>
+    <div key={book.id}>
       <dl>
         <dt>タイトル</dt>
         <dd>
-          <a href={user.url}>{user.title}</a>
+          <a href={book.url}>{book.title}</a>
         </dd>
         <dt>説明</dt>
-        <dd>{user.detail}</dd>
+        <dd>{book.detail}</dd>
         <dt>レビュー</dt>
-        <dd>{user.review}</dd>
+        <dd>{book.review}</dd>
         <dt>レビュワー</dt>
-        <dd>{user.reviewer}</dd>
+        <dd>{book.reviewer}</dd>
       </dl>
-      {user.isMine && (
+      {book.isMine && (
         <button
           onClick={() => {
             navigate(`/edit/${id}`);

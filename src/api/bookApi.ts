@@ -58,7 +58,7 @@ export const getReview = (id: string) => {
 export const getReviewMore = (offset: number) => {
   return axios
     .get(`/books?offset=${offset}`)
-    .then((res: APIBookResponseType) => {
+    .then((res) => {
       console.log(res);
       return res.data;
     })
