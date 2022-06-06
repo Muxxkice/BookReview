@@ -6,13 +6,14 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 import { deleteReview, editReview } from "../api/bookApi";
-import { EditBookType } from "../types/type";
+import { BookType, EditBookType } from "../types/type";
+
 
 export const Edit = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { id } = useParams();
-  const [newReview, setNewReview] = useState([]);
+  const [newReview, setNewReview] = useState<EditBookType>();
 
   const onSubmit = (data: EditBookType) => {
     console.log(data);
