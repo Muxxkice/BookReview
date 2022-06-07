@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { getReview } from "../api/bookApi";
+import { getReviewDetail } from "../api/bookApi";
 import { BookType } from "../types/type";
 
 export const Detail = () => {
@@ -12,7 +12,7 @@ export const Detail = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await getReview(id);
+      const res = await getReviewDetail(id);
       setReview(res);
     })();
   }, [id]);
