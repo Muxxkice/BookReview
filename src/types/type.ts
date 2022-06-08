@@ -16,6 +16,7 @@ export type EditBookType = {
   detail: string;
   review: string;
 };
+
 export type UserType = {
   name: string;
   email: string;
@@ -37,6 +38,5 @@ export type APIBookResponseType = {
     review: string;
     reviewer: string;
   }
-  length:number;
 
 };

@@ -15,7 +15,7 @@ export const Edit = () => {
   const { id } = useParams();
   const [newReview, setNewReview] = useState<EditBookType>();
 
-  const onSubmit = (data: EditBookType) => {
+  const onSubmit = async (data: EditBookType) => {
     console.log(data);
     setNewReview(data);
   };
@@ -31,13 +31,7 @@ export const Edit = () => {
   const onClickEdit = async () => {
     const res = await editReview(id, article);
     console.log(res);
-    // axios
-    //   .put(`/books/${id}`, article)
-    //   .then((res) => {
-    //     console.log(res);
     navigate(`/detail/${id}`);
-    //   })
-    //   .catch((e) => console.log(e));
   };
 
   const onClickDelete = () => {
