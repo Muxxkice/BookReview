@@ -29,6 +29,8 @@ export var getBooklist = function (IsAuth) {
             .catch(function (e) { return console.log(e); });
     }
 };
+
+getMyBooklist
 export var getPublicBooklist = function () {
     return axios.get("/books").catch(function (e) { return console.log(e); });
 };

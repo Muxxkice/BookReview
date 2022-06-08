@@ -11,8 +11,7 @@ export const deleteReview = (id: string) => {
 };
 
 export const newbook = (data: BookType) => {
-  return axios.post(`/books`, data)
-  .then<string>((res) => {
+  return axios.post(`/books`, data).then<string>((res) => {
     console.log(res);
     return res.data.id;
   });
@@ -26,7 +25,7 @@ export const getBooklist = () => {
       console.log(res);
       return res.data;
     })
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(e.status));
 };
 
 export const getPublicBooklist = () => {
@@ -39,12 +38,10 @@ export const getPublicBooklist = () => {
     .catch((e) => console.log(e));
 };
 
-//詳細
-export const getReviewDetail = (id: string) => {
-  console.log(id);
+export const getMyBooklist = (offset: number) => {
   return axios
-    .get(`/books/${id}`)
-    .then((res: APIBookResponseType) => {
+    .get(`/books?offset=${offset}`)
+    .then((res) => {
       console.log(res);
       return res.data;
     })
@@ -53,10 +50,9 @@ export const getReviewDetail = (id: string) => {
 
 //追加の本の情報
 export const getReviewMore = (offset: number) => {
-  console.log(offset);
   return axios
     .get(`/books?offset=${offset}`)
-    .then((res) => {
+    .then((res: APIBookResponseType) => {
       console.log(res);
       return res.data;
     })
@@ -73,7 +69,17 @@ export const getPublicReviewMore = (offset: number) => {
     })
     .catch((e) => console.log(e));
 };
-///books/public?offset=20 認証ユーザー
+
+//詳細
+export const getReviewDetail = (id: string) => {
+  return axios
+    .get(`/books/${id}`)
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
+    .catch((e) => console.log(e));
+};
 
 export const editReview = (
   id: string,

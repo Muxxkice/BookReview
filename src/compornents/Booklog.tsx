@@ -8,7 +8,7 @@ import { useReview } from "./useReview";
 
 const Booklog = (props) => {
   const navigate = useNavigate();
-  const {onClickDetail} = useReview();
+  const { onClickDetail } = useReview();
   const { IsAuth } = useAuth();
   const bookList = props.bookList;
 
@@ -21,9 +21,9 @@ const Booklog = (props) => {
         <dd className="line_wrap">{book.detail}</dd>
         <button
           className="secondary_btn"
-          onClick={() => {
-            onClickDetail(book.id);
-            navigate(`/detail/${book.id}`);
+          onClick={async () => {
+            // const res = await onClickDetail(book.id);
+              navigate(`/detail/${book.id}`);
           }}
         >
           詳細

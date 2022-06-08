@@ -2,13 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Loading from "../compornents/Loading";
-import { BookType } from "../types/type";
-import {useReview} from "../compornents/useReview"
+import { useReview } from "../compornents/useReview";
 
 export const Detail = () => {
   const { id } = useParams();
-  const {book } = useReview();
+  const { book } = useReview();
   const navigate = useNavigate();
+  console.log(book);
+
 
   return (
     <div className="wrapper">
@@ -37,7 +38,6 @@ export const Detail = () => {
         )}
       </div>
       <Link to="/">トップ</Link>
-      {/* <Link to="/mypage">マイページ</Link> */}
     </div>
   );
 };

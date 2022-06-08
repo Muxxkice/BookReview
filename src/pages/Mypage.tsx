@@ -11,7 +11,7 @@ export const Mypage = () => {
 	const { onSubmitLogin, userName } = useAuth();
 	const navigate = useNavigate();
 
-	const personal_booklog_map = bookList.map((user) => {
+	const personalBooklist = bookList.map((user) => {
 		if (user.reviewer === userName) {
 			return (
 				<div key={user.id} className="booklog_content">
@@ -42,7 +42,7 @@ export const Mypage = () => {
 						: (<h3>投稿履歴がありません</h3>
 						)
 				}
-				{personal_booklog_map}
+				{personalBooklist}
 			</main>
 		</>
 	)
