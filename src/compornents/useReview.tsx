@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 
 import { useAuth } from "./useAuth";
 // import Booklog from "./Booklog";
-import { getBooklist, getPublicBooklist, getReviewMore } from "../api/bookApi";
+import {
+  getBooklist,
+  getPublicBooklist,
+  getReviewMore,
+  getPublicReviewMore,
+} from "../api/bookApi";
 import { BookType } from "../types/type";
 
 export const useReview = () => {
@@ -10,12 +15,13 @@ export const useReview = () => {
   const { IsAuth } = useAuth();
 
   useEffect(() => {
+    let res = [];
     (async () => {
       if (IsAuth) {
-        const res = await getBooklist(IsAuth);
+        res = await getBooklist();
         setBookList(res);
       } else {
-        const res = await getPublicBooklist();
+        res = await getPublicBooklist();
         setBookList(res);
       }
     })();
@@ -26,11 +32,16 @@ export const useReview = () => {
   const [data, setData] = useState<Array<BookType>>([]);
 
   const fetchMore = async () => {
-    const books = await getReviewMore(offset);
+    let books = [];
+    if (IsAuth) {
+      books = await getReviewMore(offset);
+    } else {
+      books = await getPublicReviewMore(offset);
+    }
     setBookList([...bookList, ...books]);
     setData([...data, ...books]);
     setOffset(offset + books.length);
-    console.log(bookList);
+    // console.log(bookList);
     if (books.length < 10) {
       setIsEnd(true);
     }

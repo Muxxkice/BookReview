@@ -3,22 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "./useAuth";
 import LikeButton from "./LikeButton";
-import useReview from "./useReview";
 import { BookType } from "../types/type";
+import {getReviewDetail} from "../api/bookApi"
 
 const Booklog = (props) => {
   // const { bookList } = useReview();
   const navigate = useNavigate();
   const { IsAuth } = useAuth();
-  console.log(props.bookList)
+  // console.log(props.bookList)
   const  bookList = props.bookList
-
-  // useEffect(() => {
-  //   (async () => {
-  //     console.log("bookListが更新されたよ")
-  //     console.log(bookList)
-  //   })();
-  // }, [bookList]);
 
 
   const User_map = bookList.map((book: BookType,index:number) => {
