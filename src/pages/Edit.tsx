@@ -45,17 +45,17 @@ export const Edit = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>タイトル</p>
         {/* <p>{review[0].title}</p> */}
-        <input {...register("title")}></input>
+        {/* <input {...register("title")}></input> */}
         <p>url</p>
         {/* <p>{review[0].url}</p> */}
-        <input {...register("url")}></input>
+        {/* <input {...register("url")}></input> */}
         <p>詳細</p>
         {/* <p>{review[0].detail}</p> */}
-        <input {...register("detail")}></input>
+        {/* <input {...register("detail")}></input> */}
         <p>レビュー</p>
-        <input {...register("review")}></input>
+        {/* <input {...register("review")}></input> */}
         <br />
-        <button onClick={onClickDelete}>削除</button>
+        {/* <button onClick={onClickDelete}>削除</button> */}
         <button onClick={onClickEdit}>編集</button>
       </form>
       <p>idは{id}</p>

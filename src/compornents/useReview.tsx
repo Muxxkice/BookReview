@@ -7,6 +7,7 @@ import {
   getPublicBooklist,
   getReviewMore,
   getPublicReviewMore,
+  getReviewDetail,
 } from "../api/bookApi";
 import { BookType } from "../types/type";
 
@@ -47,12 +48,22 @@ export const useReview = () => {
     }
   };
 
+  const [book, setBook] = useState<null | Array<BookType>>([]);
+
+  const onClickDetail = async (id) => {
+    const res = await getReviewDetail(id);
+    console.log(res);
+    setBook(res);
+  };
+
   return {
     bookList,
     data,
     isEnd,
     offset,
     fetchMore,
+    book,
+    onClickDetail,
   };
 };
 export default useReview;

@@ -1,27 +1,14 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { getReviewDetail } from "../api/bookApi";
 import Loading from "../compornents/Loading";
 import { BookType } from "../types/type";
+import {useReview} from "../compornents/useReview"
 
 export const Detail = () => {
   const { id } = useParams();
+  const {book } = useReview();
   const navigate = useNavigate();
-  const [book, setReview] = useState<null | Array<BookType>>([]);
-
-  useEffect(() => {
-    (async () => {
-      const res = await getReviewDetail(id);
-      console.log(res);
-      setReview(res);
-    })();
-  }, [id]);
-
-  if (!book) {
-    <Loading />;
-  }
 
   return (
     <div className="wrapper">
