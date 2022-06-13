@@ -6,19 +6,18 @@ import { signin, getUser, signup } from "../api/userApi";
 import { setDefaultHeader } from "../api";
 import { UserType, TokenType } from "../types/type";
 
-
 export const useAuth = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
-  const [userName, setUserName] = useState(); //ユーザー名
-  const [IsAuth, setIsAuth] = useState(false); //ログイン判定
-  const [test, setTest] = useState(false);
+  const [userName, setUserName] = useState<string>("gest"); //ユーザー名
+  const [IsAuth, setIsAuth] = useState<boolean>(false); //ログイン判定
+  // const [isHeader, setIsHeader] = useState<boolean>(false);
 
-  // cookiesが更新されたらログイン判定
-  //ログイン状態で/loginにいると/に飛ぶ
+  //ネットワークエラーでユーザートークンが取れてない場合にもtrueになってる
+
   useEffect(() => {
     setDefaultHeader({ Authorization: `Bearer ${cookies.userToken}` });
     setIsAuth(!!cookies.userToken);
-    setTest(true);
+    // setIsHeader(true);
     console.log("cookiesが更新された");
   }, [cookies]);
 
@@ -29,7 +28,7 @@ export const useAuth = () => {
         setUserName(res.data.name);
         return;
       }
-      setUserName(null);
+      // setUserName("");
     })();
   }, [IsAuth]);
 
@@ -58,7 +57,7 @@ export const useAuth = () => {
     userName,
     IsAuth,
     setUserName,
-    test,
+    // isHeader,
   };
 };
 

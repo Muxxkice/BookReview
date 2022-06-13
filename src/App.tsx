@@ -18,10 +18,14 @@ import Mypage from "./pages/Mypage";
 import { useAuth } from "./compornents/useAuth";
 
 const App = () => {
-  const { IsAuth, test } = useAuth();
-  if (!test) {
-    return null;
-  }
+  const { IsAuth,
+    // isHeader
+  } = useAuth();
+
+  // if (!isHeader) {
+  //   return null;
+  // }
+
   return (
     <Router>
       <Routes>

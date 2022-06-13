@@ -1,24 +1,28 @@
-
 :root {
   --primary: #8674eb;
-  --secondary:#4c2ff1;
-  --acsent:#ed7c68;
+  --secondary: #4c2ff1;
+  --acsent: #ed7c68;
   /* --base:  ; */
   --text: #555555;
 }
-@media screen and (max-width:639px) {
+@media screen and (max-width: 639px) {
   /*スマホ用のcssを記述*/
-  }
+}
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
   /*pc用のcssを記述*/
-  }
+}
+
+input,
+textarea {
+  user-select: auto;
+}
 
 h2 {
   text-align: center;
-  }
+}
 html {
-  background-color:var(--primary) ;
+  background-color: var(--primary);
 }
 
 .flex {
@@ -28,7 +32,7 @@ html {
 }
 
 main {
-  background-color: #EEE;
+  background-color: #eee;
 }
 .main_container {
   padding-top: 50px;
@@ -46,31 +50,30 @@ li {
   background-color: var(--secondary);
   padding: 3px;
   margin: 10px;
-
 }
 li a {
-  padding : 0 10px;
-  color : #fff;
+  padding: 0 10px;
+  color: #fff;
 }
 
 header {
-  background-color:var(--primary);
+  background-color: var(--primary);
   width: 100%;
   height: 50px;
   position: fixed;
-  display:flex;
+  display: flex;
 }
-header p{
+header p {
   margin: 10px;
 }
 span {
   color: red;
   font-size: 12px;
-  margin :5px;
+  margin: 5px;
 }
 button {
-  padding : 0 10px;
-  margin :10px 0;
+  padding: 0 10px;
+  margin: 10px 0;
 }
 .primary_btn {
   background-color: #ed7c68;
@@ -84,83 +87,82 @@ button {
   display: inline-flex;
 }
 
-
-input  {
+input {
   border: 1px solid #8674eb;
   border-radius: 3px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
 textarea {
   border: 1px solid #8674eb;
   border-radius: 3px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
   height: 200px;
   width: 400px;
 }
-input:focus ,textarea:focus {
-  border: 2px solid  skyblue;
+input:focus,
+textarea:focus {
+  border: 2px solid skyblue;
   outline: none;
 }
 
 .wrapper {
   width: 500px;
-  height:500px;
-  background-color: #EEE;
-  border-radius: 1%;;
-  border:1px solid #EEE;
-  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-  -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-  -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  height: 500px;
+  background-color: #eee;
+  border-radius: 1%;
+  border: 1px solid #eee;
+  box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
 }
 
 .top_container {
   margin: 10px;
-  height:500px;
+  height: 500px;
   width: 500px;
   margin-top: 30px;
 
   background-color: aliceblue;
-  border-radius: 1%;;
-    border:1px solid #EEE;
-    box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-    -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-    -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-    }
-    .top_container form {
-      margin-top: 40px;
-    }
-    .input_box {
-      margin: 20px;
-    }
+  border-radius: 1%;
+  border: 1px solid #eee;
+  box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
+.top_container form {
+  margin-top: 40px;
+}
+.input_box {
+  margin: 20px;
+}
 
+.review_container {
+  margin: 10px;
+  height: 800px;
+  width: 600px;
+  background-color: aliceblue;
+  border-radius: 1%;
+  border: 1px solid #eee;
+  box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+}
 
-    .review_container {
-      margin: 10px;
-      height:800px;
-      width: 600px;
-      background-color: aliceblue;
-      border-radius: 1%;;
-        border:1px solid #EEE;
-        box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-        -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-        -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-        }
-
-.booklog_content{
+.booklog_content {
   width: 500px;
   height: 400px;
-  margin: 20px auto ;
+  margin: 20px auto;
 
-  padding :20px;
+  padding: 20px;
   background-color: rgb(255, 229, 205);
-  border-radius: 2%;;
-  box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-  -webkit-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
-  -moz-box-shadow:rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  border-radius: 2%;
+  box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -webkit-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
+  -moz-box-shadow: rgba(122, 122, 122, 0.0588235) 0px 0px 6px 3px;
 }
- h2 {
+h2 {
   text-align: center;
 }
 .line_wrap {
@@ -169,8 +171,14 @@ input:focus ,textarea:focus {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+.alert_box {
+  height: 100px;
+  width: 100px;
+  background-color: blueviolet;
+}
+
 footer {
-  height : 50px;
+  height: 50px;
 }
 /* .user_review {
   background-color: #45ccc8
@@ -179,11 +187,10 @@ footer {
 .profile_container1 {
 }
 .new_container {
-  }
+}
 .detail_container {
 }
 .edit_container {
-
 }
 
 /* 元からある */

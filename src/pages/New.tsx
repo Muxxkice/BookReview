@@ -1,21 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { newbook } from "../api/bookApi";
 import { BookType } from "../types/type";
-
+import { useTime } from "../compornents/useTime";
+import { Alert } from "../compornents/Alert";
 export const New = () => {
   const {
     register,
     handleSubmit, //errors
   } = useForm();
   const navigate = useNavigate();
-  // const { id } = useParams();
+  // const { setTime } = useTime();
 
   const onSubmit = async (data: BookType) => {
     const id = await newbook(data);
     if (id) {
+      // setTime(true);
+      // <Alert alert={"登録できました"} />
+      // setTimeout(() => setTime(false),3000);
       navigate(`/detail/${id}`);
     }
   };
@@ -36,7 +40,7 @@ export const New = () => {
           <textarea {...register("review")}></textarea>
           <br />
           <button className="primary_btn">登録</button>
-          <button className="secondary_btn ">リセット</button>
+          {/* <button className="secondary_btn ">リセット</button> */}
         </form>
       </div>
       <Link to="/">Home</Link>

@@ -9,7 +9,6 @@ export const signup = (newUser: UserType) => {
     })
     .catch((e: AxiosError<{ error: string }>) => {
       console.log(e);
-      alert("ログインできませんでした");
     });
 };
 
@@ -21,7 +20,6 @@ export const signin = (user: UserType) => {
     })
     .catch((e: AxiosError<{ error: string }>) => {
       console.log(e);
-      ApiError(e);
     });
 };
 

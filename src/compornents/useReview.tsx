@@ -10,7 +10,7 @@ import {
   getReviewDetail,
 } from "../api/bookApi";
 
-import { BookType } from "../types/type";
+import { BookType, EditBookType, ResponseBookType } from "../types/type";
 
 export const useReview = () => {
   const [bookList, setBookList] = useState<Array<BookType>>([]);
@@ -28,11 +28,24 @@ export const useReview = () => {
     })();
   }, []);
 
+  // let books = [
+  //   {
+  //     id: "",
+  //     title: "",
+  //     url: "",
+  //     detail: "",
+  //     review: "",
+  //     reviewer: "",
+  //     isMine: false,
+  //   },
+  // ];
+
+  // [Symbol.iterator]()
+  //book = [Symbol.iterator]()
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const [offset, setOffset] = useState<number>(10);
   const [data, setData] = useState<Array<BookType>>([]);
 
-  // let books = [];
   const fetchMore = async () => {
     if (IsAuth) {
       const books = await getReviewMore(offset);
@@ -42,20 +55,52 @@ export const useReview = () => {
         setIsEnd(true);
       }
     } else {
-      // books = await getPublicReviewMore(offset);
+      const books = await getPublicReviewMore(offset);
+      setData([...data, ...books]);
+      setOffset(offset + books.length);
+      if (books.length < 10) {
+        setIsEnd(true);
+      }
     }
-    // setBookList([...bookList, ...books]);
   };
 
   const { id } = useParams();
-  const [book, setBook] = useState<BookType[]>([]);
+  const [bookId, setBookId] = useState("");
+  const [book, setBook] = useState<BookType>({
+    id: "",
+    title: "",
+    url: "",
+    detail: "",
+    review: "",
+    reviewer: "",
+    isMine: false,
+  });
+
+  const [newReview, setNewReview] = useState<EditBookType>({
+    title: "",
+    url: "",
+    detail: "",
+    review: "",
+  });
+
+  // const getDetail = async (id:string) => {
+  //   const res = await getReviewDetail(id);
+  //   console.log(res);
+  //   setBook(res);
+  //   console.log(book);
+  //   setNewReview(res);
+  //   console.log(newReview);
+  // };
+
   useEffect(() => {
     (async () => {
       const res = await getReviewDetail(id);
       console.log(res);
       setBook(res);
+      console.log(book);
+      setNewReview(res);
     })();
-  }, [id]);
+  }, [bookId]);
 
   // const onClickDetail = async (id: string) => {
   //   const res = await getReviewDetail(id);
@@ -101,7 +146,11 @@ export const useReview = () => {
     offset,
     fetchMore,
     book,
-    // mybook,
+    setBook,
+    newReview,
+    setNewReview,
+    setBookId,
+    bookId,
   };
 };
 export default useReview;

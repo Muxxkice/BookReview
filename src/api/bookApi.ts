@@ -1,21 +1,10 @@
 import axios from "axios";
-import { BookType, APIBookResponseType } from "../types/type";
-
-export const deleteReview = (id: string) => {
-  axios
-    .delete(`books/${id}`)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((e) => console.log(e));
-};
-
-export const newbook = (data: BookType) => {
-  return axios.post(`/books`, data).then<string>((res) => {
-    console.log(res);
-    return res.data.id;
-  });
-};
+import {
+  BookType,
+  ResponseBookType,
+  APIBookResponseType,
+  EditBookType,
+} from "../types/type";
 
 //書籍一覧取得
 export const getBooklist = () => {
@@ -52,20 +41,25 @@ export const getMyBooklist = (offset: number) => {
 export const getReviewMore = (offset: number) => {
   return axios
     .get(`/books?offset=${offset}`)
-    .then((res: APIBookResponseType) => {
-      console.log(res);
-      return res.data;
+    .then((res) => {
+      if (res.data.length > 0) {
+        return res.data;
+      } else {
+        return null;
+      }
     })
     .catch((e) => console.log(e));
 };
 
 export const getPublicReviewMore = (offset: number) => {
-  console.log(offset);
   return axios
     .get(`/public/books?offset=${offset}`)
     .then((res) => {
-      console.log(res);
-      return res.data;
+      if (res.data.length > 0) {
+        return res.data;
+      } else {
+        return null;
+      }
     })
     .catch((e) => console.log(e));
 };
@@ -81,15 +75,31 @@ export const getReviewDetail = (id: string) => {
     .catch((e) => console.log(e));
 };
 
-export const editReview = (
-  id: string,
-  article: Pick<BookType, "title" | "url" | "detail" | "review">,
-) => {
+export const editReview = (id: string, article: EditBookType) => {
   return axios
     .put(`/books/${id}`, article)
     .then((res) => {
+      console.log("editReview");
       console.log(res);
       return res.data;
     })
     .catch((e) => console.log(e));
+};
+
+//削除
+export const deleteReview = (id: string) => {
+  axios
+    .delete(`books/${id}`)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((e) => console.log(e));
+};
+
+//追加
+export const newbook = (data: BookType) => {
+  return axios.post(`/books`, data).then<string>((res) => {
+    console.log(res);
+    return res.data.id;
+  });
 };

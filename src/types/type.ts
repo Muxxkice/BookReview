@@ -9,7 +9,31 @@ export type BookType = {
   reviewer: string;
   isMine: boolean;
 };
+export type ResponseBookType = {
+  id: string;
+  title: string;
+  url: string;
+  detail: string;
+  review: string;
+  reviewer: string;
+  isMine: boolean;
+  length: number;
+};
 
+export type APIBookResponseType = {
+  data: {
+    id: string;
+    title: string;
+    url: string;
+    detail: string;
+    review: string;
+    reviewer: string;
+  }
+  length: number;
+};
+export type Length = {
+  length: number;
+};
 export type EditBookType = {
   title: string;
   url: string;
@@ -23,20 +47,9 @@ export type UserType = {
   password: string;
 };
 
-
 export type TokenType = {
   data: {
     token: string;
   };
 };
-export type APIBookResponseType = {
-  data: {
-    id:string
-    title: string;
-    url: string;
-    detail: string;
-    review: string;
-    reviewer: string;
-  }
 
-};

@@ -8,7 +8,7 @@ import { useReview } from "./useReview";
 
 const Booklog = (props) => {
   const navigate = useNavigate();
-  const { onClickDetail } = useReview();
+  const { bookId,setBookId } = useReview();
   const { IsAuth } = useAuth();
   const bookList = props.bookList;
 
@@ -22,8 +22,10 @@ const Booklog = (props) => {
         <button
           className="secondary_btn"
           onClick={async () => {
-            // const res = await onClickDetail(book.id);
-              navigate(`/detail/${book.id}`);
+            setBookId(book.id)
+            console.log(bookId)
+            navigate(`/detail/${book.id}`);
+            // navigate(`/detail/${book.id}`);
           }}
         >
           詳細
