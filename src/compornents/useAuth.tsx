@@ -10,14 +10,14 @@ export const useAuth = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
   const [userName, setUserName] = useState<string>("gest"); //ユーザー名
   const [IsAuth, setIsAuth] = useState<boolean>(false); //ログイン判定
-  // const [isHeader, setIsHeader] = useState<boolean>(false);
+  const [isToken, setIsToken] = useState<boolean>(false); //トークン
 
   //ネットワークエラーでユーザートークンが取れてない場合にもtrueになってる
 
   useEffect(() => {
     setDefaultHeader({ Authorization: `Bearer ${cookies.userToken}` });
     setIsAuth(!!cookies.userToken);
-    // setIsHeader(true);
+    setIsToken(true);
     console.log("cookiesが更新された");
   }, [cookies]);
 
@@ -34,14 +34,17 @@ export const useAuth = () => {
 
   const signupUser = async (newUser: UserType) => {
     const res = await signup(newUser);
-    console.log(res);
-    return setCookie("userToken", res);
+    if (res != null) {
+      return setCookie("userToken", res);
+    }
   };
 
   const onSubmitLogin = async (user: UserType) => {
+    console.log("onSubmitLogin");
     const res = await signin(user);
-    console.log(res);
-    return setCookie("userToken", res);
+    if (res != null) {
+      return setCookie("userToken", res);
+    }
   };
 
   const deleteToken = () => {
@@ -57,7 +60,7 @@ export const useAuth = () => {
     userName,
     IsAuth,
     setUserName,
-    // isHeader,
+    isToken,
   };
 };
 

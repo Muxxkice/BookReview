@@ -4,8 +4,13 @@ import { UserType, TokenType } from "../types/type";
 export const signup = (newUser: UserType) => {
   return axios
     .post(`/users`, newUser)
-    .then((res: TokenType) => {
-      return res.data.token;
+    .then((res) => {
+      if (res.statusText === "OK") {
+        console.log("OK");
+        return res.data.token;
+      } else {
+        return null;
+      }
     })
     .catch((e: AxiosError<{ error: string }>) => {
       console.log(e);
@@ -15,11 +20,17 @@ export const signup = (newUser: UserType) => {
 export const signin = (user: UserType) => {
   return axios
     .post("/signin", user)
-    .then((res: TokenType) => {
-      return res.data.token;
+    .then((res) => {
+      if (res.statusText === "OK") {
+        console.log("OK");
+        return res.data.token;
+      } else {
+        return null;
+      }
     })
     .catch((e: AxiosError<{ error: string }>) => {
       console.log(e);
+      alert("ログイン出来ませんでした");
     });
 };
 

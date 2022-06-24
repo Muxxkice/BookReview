@@ -19,17 +19,19 @@ const Booklog = (props) => {
         <a href={book.url}>{book.title}</a>
         <dt>詳細</dt>
         <dd className="line_wrap">{book.detail}</dd>
-        <button
+        {IsAuth && (
+          <button
           className="secondary_btn"
           onClick={async () => {
-            setBookId(book.id)
-            console.log(bookId)
+            // setBookId(book.id)
+            // console.log(bookId)
             navigate(`/detail/${book.id}`);
-            // navigate(`/detail/${book.id}`);
           }}
         >
           詳細
         </button>
+        )}
+
         <div className="user_review">
           <dt>レビュー</dt>
           <dd className="line_wrap">{book.review}</dd>

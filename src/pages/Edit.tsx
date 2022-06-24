@@ -25,6 +25,7 @@ export const Edit = () => {
     review: newReview.review,
   };
 
+//認証トークンがいる
   const onClickEdit = async () => {
     console.log(id, article);
     const res = await editReview(id, article);

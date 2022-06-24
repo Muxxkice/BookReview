@@ -176,6 +176,12 @@ h2 {
   width: 100px;
   background-color: blueviolet;
 }
+.loading {
+  height: 100px;
+  width: 100px;
+  background-color: blueviolet;
+  color: #fff;
+}
 
 footer {
   height: 50px;

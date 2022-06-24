@@ -5,10 +5,15 @@ import Booklog from "../compornents/Booklog";
 import Header from "../compornents/Header";
 import Footer from "../compornents/Footer";
 // import { Reviewlog } from "../compornents/Reviewlog";
+import Loading from "../compornents/Loading";
 import { useReview } from "../compornents/useReview";
 
 const Home = () => {
   const { isEnd, fetchMore, bookList, data } = useReview();
+
+  if (bookList == null) {
+    return <Loading />;
+  }
   return (
     <>
       <Header />

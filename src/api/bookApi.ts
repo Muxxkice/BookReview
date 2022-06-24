@@ -69,8 +69,9 @@ export const getReviewDetail = (id: string) => {
   return axios
     .get(`/books/${id}`)
     .then((res) => {
-      console.log(res);
-      return res.data;
+      if (res.data.length > 0) {
+        return res.data;
+      }
     })
     .catch((e) => console.log(e));
 };
@@ -90,8 +91,10 @@ export const editReview = (id: string, article: EditBookType) => {
 export const deleteReview = (id: string) => {
   axios
     .delete(`books/${id}`)
-    .then((data) => {
-      console.log(data);
+    .then((res) => {
+      if (res.data.length > 0) {
+        return res.data;
+      }
     })
     .catch((e) => console.log(e));
 };

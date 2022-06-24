@@ -10,7 +10,7 @@ import {
   getReviewDetail,
 } from "../api/bookApi";
 
-import { BookType, EditBookType, ResponseBookType } from "../types/type";
+import { BookType, EditBookType } from "../types/type";
 
 export const useReview = () => {
   const [bookList, setBookList] = useState<Array<BookType>>([]);
@@ -92,6 +92,7 @@ export const useReview = () => {
   //   console.log(newReview);
   // };
 
+//認証トークンがいる
   useEffect(() => {
     (async () => {
       const res = await getReviewDetail(id);

@@ -7,12 +7,13 @@ import { useReview } from "../compornents/useReview";
 export const Detail = () => {
   const { id } = useParams();
   const { book } = useReview();
+
   const navigate = useNavigate();
 
-  if (!book) {
-    <Loading />;
-  }
   console.log(book);
+  // if (book == null) {
+  //   return<Loading />;
+  // }
 
   return (
     <section className="review_container">
@@ -32,6 +33,7 @@ export const Detail = () => {
             <dd>{book.reviewer}</dd>
           </dl>
           {book.isMine && (
+            //認証トークンがいる
             <button
               className="primary_btn"
               onClick={() => {

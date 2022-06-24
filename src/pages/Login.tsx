@@ -13,6 +13,7 @@ const Login = () => {
 	const { onSubmitLogin } = useAuth();
 
 	const onSubmit = (data:UserType) => {
+		console.log(data)
 		onSubmitLogin(data)
 	};
 
